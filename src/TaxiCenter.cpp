@@ -1,7 +1,8 @@
 
 #include "TaxiCenter.h"
 
-TaxiCenter::TaxiCenter(Point *taxiCenterLocation) : taxiCenterLocation(taxiCenterLocation) {}
+TaxiCenter::TaxiCenter(Point *taxiCenterLocation) : taxiCenterLocation(
+        taxiCenterLocation) {}
 
 TaxiCenter::~TaxiCenter() {
 
@@ -13,6 +14,10 @@ std::vector<Driver *> &TaxiCenter::getDrivers() {
 
 std::vector<Vehicle *> &TaxiCenter::getVehicles() {
     return vehicles;
+}
+
+std::queue<Trip *> &TaxiCenter::getTrips() {
+    return trips;
 }
 
 std::vector<Taxi *> &TaxiCenter::getTaxis() {
@@ -33,7 +38,7 @@ void TaxiCenter::addVehicle(Vehicle *vehicle) {
     vehicles.push_back(vehicle);
 }
 
-Trip* TaxiCenter::answerCall() {
+Trip *TaxiCenter::answerCall() {
     // not implemented yet
 }
 
@@ -41,9 +46,9 @@ void TaxiCenter::createTaxi(Driver *driver) {
 
     for (int i = 0; i < vehicles.size(); ++i) {
 
-        if(driver->getDriverId() == vehicles.at(i)->getVehicleId()){
+        if (driver->getDriverId() == vehicles.at(i)->getVehicleId()) {
 
-            Taxi * taxi = new Taxi(driver, vehicles.at(i), Point(0,0));
+            Taxi *taxi = new Taxi(driver, vehicles.at(i), Point(0, 0));
             addTaxi(taxi);
         }
     }
@@ -73,6 +78,9 @@ void TaxiCenter::addTaxi(Taxi *taxi) {
 
     taxis.push_back(taxi);
 }
+
+
+
 
 
 

@@ -3,6 +3,7 @@
 #define EX2_TAXICENTER_H
 
 #include <vector>
+#include <queue>
 #include "Driver.h"
 #include "Vehicle.h"
 #include "Taxi.h"
@@ -29,7 +30,8 @@ private:
     std::vector<Driver *>  drivers;
     std::vector<Vehicle *> vehicles;
     std::vector<Taxi *>    taxis;
-    Point *taxiCenterLocation;
+    std::queue<Trip *>     trips;
+    Point                  *taxiCenterLocation;
     std::vector<IObserver> observers;
 
     void addTaxi(Taxi *taxi);
@@ -84,6 +86,11 @@ public:
      * Returns the taxis the taxi center has.
      */
     std::vector<Taxi *> &getTaxis();
+
+    /*
+     * Returns the trips that are waiting for a taxi.
+     */
+    std::queue<Trip *> &getTrips();
 
     virtual void registerObserver(IObserver *observer);
 
