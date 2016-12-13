@@ -7,14 +7,21 @@
 
 
 #include "Driver.h"
+#include "StringParser.h"
+#include "MainFlow.h"
 
 class Menu {
 
+private:
+    StringParser stringParser;
+    MainFlow mainFlow;
+
 public:
 
-    int checkUserInput(std::string userSelection);
+    Menu();
+    int initializeGame();
+    int checkUserInput(int userSelection);
     int runMenu();
-    void createDriver(unsigned int id, unsigned int age, MaritalStatus status, unsigned int experience, int vehicleId);
 
 };
 

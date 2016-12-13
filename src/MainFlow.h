@@ -6,11 +6,13 @@
 #include "TaxiCenter.h"
 #include "Grid.h"
 #include "VehicleFactory.h"
+#include "BaseParser.h"
 
 class MainFlow {
 
 private:
 
+    BaseParser     parser;
     TaxiCenter     *taxiCenter;
     Grid           *map;
     VehicleFactory vehicleFactory;
@@ -26,6 +28,8 @@ public:
      * Destructor.
      */
     virtual ~MainFlow();
+
+    void startDriving();
 
     /*
      * Creates a map with obstacles.

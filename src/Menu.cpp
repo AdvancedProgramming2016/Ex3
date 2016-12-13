@@ -3,15 +3,26 @@
 //
 
 #include "Menu.h"
-/*
 #include "Menu.h"
 #include "Driver.h"
 
-int initializeGame() {
-    Create Grid with obstacles.
+Menu::Menu() {
 
+}
 
+int Menu::initializeGame() {
+
+    //Create Grid with obstacles.
+    this->stringParser.parseGridInput();
  }
+
+int checkUserInput(int userSelection){
+
+    if (userSelection > 7) {
+        return 1;
+    }
+    return 0;
+}
 
 int Menu::runMenu() {
 
@@ -19,33 +30,23 @@ int Menu::runMenu() {
 
     do {
 
-        std::getline(std::cin, userSelection);
-        try {
-            // Validate user input
-            this->checkUserInput(userSelection);
-        }
-        // If user input was invalid
-        catch(int param) {
-            exit(1);
-        }
+        std::cin >> userOption;
 
-        std::getline(std::cin, userInput);
+        switch(userOption) {
 
-        switch(userInput) {
-
+            // Create driver
             case 1:
-                this->parseDriverInput(userInput);
-                this->createDriver(Something);
+                this->stringParser.parseDriverInput();
                 break;
 
+            // Create trip
             case 2:
-                this->parseTripInput(userInput);
-                this->createTrip(userInput);
+                this->stringParser.parseTripInput();
                 break;
 
+            // Create vehicle
             case 3:
-                this->parseVehicleInput(userInput);
-                this->createVehicle(userInput);
+                this->stringParser.parseVehicleInput();
                 break;
 
             // Request for driver location
@@ -54,21 +55,19 @@ int Menu::runMenu() {
 
             // Start Driving
             case 6:
+                this->mainFlow.startDriving();
                 break;
 
             case 7:
-                break;
+                delete this->mainFlow;
+                exit(1);
 
-            /*
             // Invalid input
             default:
                 exit(1);
-            */
-/*
+
         }
 
     } while (userOption < 7);
 
 }
-
-*/

@@ -33,22 +33,7 @@ void MainFlow::createVehicle(Vehicle *vehicle) {
 
 void MainFlow::createTrip(Trip *trip) {
 
-
-    Taxi *currentTaxi;
-
-    //Search for a taxi to assign the trip to it.
-    for (int i = 0; i < taxiCenter->getTaxis().size(); ++i) {
-
-        currentTaxi = taxiCenter->getTaxis().at(i);
-
-        //Check's if the current taxi doesn't have a trip,
-        // and is at the customers location.
-        if (currentTaxi->getTrip() == 0 && currentTaxi->
-                getCurrentPosition() == trip->getStartPoint()) {
-
-            currentTaxi->setTrip(trip);
-        }
-    }
+    // Push new trip to trip queue
 }
 
 TaxiCenter *MainFlow::getTaxiCenter() const {
@@ -57,6 +42,16 @@ TaxiCenter *MainFlow::getTaxiCenter() const {
 
 Grid *MainFlow::getMap() const {
     return map;
+}
+
+void MainFlow::startDriving() {
+
+    unsigned int i;
+    std::vector<Driver *> driverVec = this->taxiCenter->getDrivers();
+
+    for (i = 0; i < driverVec.size(); i++) {
+    }
+
 }
 
 void MainFlow::exitSystem() {
