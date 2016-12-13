@@ -1,7 +1,8 @@
 
 #include "Grid.h"
 
-Grid::Grid(int length, int width) : m_length(length), m_width(width) {
+Grid::Grid(int length, int width, std::vector<Point> obstacles) : m_length(
+        length), m_width(width), obstacles(obstacles) {
 
     m_edges.reserve(length * width);
 
@@ -29,28 +30,36 @@ void Grid::build_relations() {
 
             if (j < m_width - 1) {
 
-                m_edges.at(counter).add_relation(*get_vertex(Point(i, j + 1))); //right relationship
+                m_edges.at(counter).add_relation(
+                        *get_vertex(Point(i, j + 1))); //right relationship
             }
 
             if (i > 0) {
 
-                m_edges.at(counter).add_relation(*get_vertex(Point(i - 1, j))); //upper relationship
+                m_edges.at(counter).add_relation(
+                        *get_vertex(Point(i - 1, j))); //upper relationship
             }
 
             if (j > 0) {
 
-                m_edges.at(counter).add_relation(*get_vertex(Point(i, j - 1))); //left relationship
+                m_edges.at(counter).add_relation(
+                        *get_vertex(Point(i, j - 1))); //left relationship
             }
 
 
             if (i < m_length - 1) {
 
 
-                m_edges.at(counter).add_relation(*get_vertex(Point(i + 1, j))); //lower relationship
+                m_edges.at(counter).add_relation(
+                        *get_vertex(Point(i + 1, j))); //lower relationship
             }
 
             counter++;
         }
     }
 
+}
+
+const std::vector<Point> &Grid::getObstacles() const {
+    return obstacles;
 }

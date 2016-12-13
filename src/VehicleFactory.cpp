@@ -1,7 +1,7 @@
 
 #include "VehicleFactory.h"
 
-Vehicle *VehicleFactory::makeVehicle(int id, int vehicleType, Manufacturer manufacturer, Color color) {
+Vehicle *VehicleFactory::makeVehicle(int id, int vehicleType, char manufacturer, char color) {
 
     Vehicle *vehicle = 0;
 

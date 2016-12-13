@@ -1,8 +1,8 @@
 
 #include "Vehicle.h"
 
-Vehicle::Vehicle(unsigned int vehicleId, Manufacturer carManufacturer,
-                 Color color) : vehicleId(vehicleId),
+Vehicle::Vehicle(unsigned int vehicleId, char carManufacturer,
+                 char color) : vehicleId(vehicleId),
                                 carManufacturer(carManufacturer),
                                 color(color), kmPassed(0) {}
 
@@ -15,11 +15,11 @@ unsigned int Vehicle::getKmPassed() const {
     return kmPassed;
 }
 
-Manufacturer Vehicle::getCarManufacturer() const {
+char Vehicle::getCarManufacturer() const {
     return carManufacturer;
 }
 
-Color Vehicle::getColor() const {
+char Vehicle::getColor() const {
     return color;
 }
 
@@ -36,6 +36,6 @@ unsigned int Vehicle::getSpeedLimit() const {
 }
 
 void Vehicle::increaseKmPassed() {
-
+    kmPassed++;
 }
 

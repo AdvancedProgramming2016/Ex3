@@ -14,10 +14,7 @@ const Point &Passenger::getDestinationPoint() const {
 
 unsigned Passenger::generateSatisfaction() {
 
-    /*
     srand(time(NULL));
 
     return (unsigned)(rand() % 5) + 1;
-     */
-    return 1;
 }

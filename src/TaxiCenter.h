@@ -9,10 +9,15 @@
 #include "ISubject.h"
 
 class Driver;
+
 class Taxi;
+
 class Point;
+
 class Trip;
+
 class Passenger;
+
 /**
  * The class represents a taxi center, which manages all the taxis.
  * It receives passengers calls, and assigns drivers to vehicles.
@@ -24,13 +29,10 @@ private:
     std::vector<Driver *>  drivers;
     std::vector<Vehicle *> vehicles;
     std::vector<Taxi *>    taxis;
-    Point       *           taxiCenterLocation;
+    Point *taxiCenterLocation;
     std::vector<IObserver> observers;
 
-    /*
-     * Creates a new taxi.
-     */
-    void createTaxi();
+    void addTaxi(Taxi *taxi);
 
 public:
 
@@ -44,7 +46,12 @@ public:
      */
     virtual ~TaxiCenter();
 
-    Trip* answerCall();
+    Trip *answerCall();
+
+    /*
+    * Creates a new taxi by connecting a driver with a vehicle.
+    */
+    void createTaxi(Driver *driver);
 
     const std::vector<IObserver> &getObservers() const;
 

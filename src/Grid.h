@@ -11,8 +11,9 @@
 class Grid : public Graph {
 
 private:
-    int       m_length;
-    int       m_width;
+    int                m_length;
+    int                m_width;
+    std::vector<Point> obstacles;
 
     /*
      * The method builds the relations between the cells of the grid.
@@ -24,7 +25,12 @@ public:
     /*
      * Constructor which receives the size of the matrix.
      */
-    Grid(int length, int width);
+    Grid(int length, int width, std::vector<Point> obstacles);
+
+    /*
+     * Returns the obstacles that appear on the map.
+     */
+    const std::vector<Point> &getObstacles() const;
 
 };
 

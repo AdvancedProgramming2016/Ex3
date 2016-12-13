@@ -40,21 +40,14 @@ public:
     /*
      * Creates a new driver.
      */
-    void createDriver(unsigned int driverId, unsigned int age,
-                      MaritalStatus maritalStatus,
-                      unsigned int yearsOfExperience,
-                      unsigned int vehicleId);
+    void createDriver(Driver *driver);
 
     /*
      * Creates a new vehicle.
      */
-    void createVehicle(int id, int vehicleType,
-                       Manufacturer manufacturer, Color color);
+    void createVehicle(Vehicle *vehicle);
 
-    void createTrip(unsigned int rideId, unsigned int startX,
-                    unsigned int startY, unsigned int endX,
-                    unsigned int endY, unsigned int numOfPassengers,
-                    unsigned int tariff);
+    void createTrip(Trip * trip);
 
     /*
      * Returns the taxi center.
@@ -65,6 +58,11 @@ public:
      * Returns the map.
      */
     Grid *getMap() const;
+
+    /*
+     * Exits the taxiCenter system by deleting all the instances and exiting.
+     */
+    void exitSystem();
 };
 
 

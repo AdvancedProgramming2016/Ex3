@@ -20,31 +20,35 @@ void MainFlow::createTaxiCenter(Point *location) {
     taxiCenter = new TaxiCenter(location);
 }
 
-void MainFlow::createDriver(unsigned int driverId, unsigned int age,
-                            MaritalStatus maritalStatus,
-                            unsigned int yearsOfExperience,
-                            unsigned int vehicleId) {
+void MainFlow::createDriver(Driver *driver) {
 
-    Driver *driver = new Driver(driverId, age, maritalStatus, yearsOfExperience,
-                                vehicleId);
     taxiCenter->addDriver(driver);
+    taxiCenter->createTaxi(driver);
 }
 
-void MainFlow::createVehicle(int id, int vehicleType,
-                             Manufacturer manufacturer, Color color) {
+void MainFlow::createVehicle(Vehicle *vehicle) {
 
-    Vehicle *vehicle = vehicleFactory.makeVehicle(id, vehicleType,
-                                                  manufacturer, color);
     taxiCenter->addVehicle(vehicle);
 }
 
-void MainFlow::createTrip(unsigned int rideId, unsigned int startX,
-                          unsigned int startY, unsigned int endX,
-                          unsigned int endY, unsigned int numOfPassengers,
-                          unsigned int tariff) {
-    Point start(startX, startY);
-    Point end(endX, endY);
-    Trip *trip = new Trip(rideId, start, end, numOfPassengers, tariff);
+void MainFlow::createTrip(Trip *trip) {
+
+
+    Taxi *currentTaxi;
+
+    //Search for a taxi to assign the trip to it.
+    for (int i = 0; i < taxiCenter->getTaxis().size(); ++i) {
+
+        currentTaxi = taxiCenter->getTaxis().at(i);
+
+        //Check's if the current taxi doesn't have a trip,
+        // and is at the customers location.
+        if (currentTaxi->getTrip() == 0 && currentTaxi->
+                getCurrentPosition() == trip->getStartPoint()) {
+
+            currentTaxi->setTrip(trip);
+        }
+    }
 }
 
 TaxiCenter *MainFlow::getTaxiCenter() const {
@@ -53,6 +57,30 @@ TaxiCenter *MainFlow::getTaxiCenter() const {
 
 Grid *MainFlow::getMap() const {
     return map;
+}
+
+void MainFlow::exitSystem() {
+
+    //delete all the taxis.
+    for (int taxiIndex = 0;
+         taxiIndex < taxiCenter->getTaxis().size(); ++taxiIndex) {
+        delete taxiCenter->getTaxis().at(taxiIndex);
+    }
+
+    //delete all the drivers.
+    for (int driverIndex = 0;
+         driverIndex < taxiCenter->getDrivers().size(); ++driverIndex) {
+        delete taxiCenter->getDrivers().at(driverIndex);
+    }
+
+    //delete all the vehicles.
+    for (int vehicleIndex = 0;
+         vehicleIndex < taxiCenter->getVehicles().size(); ++vehicleIndex) {
+        delete taxiCenter->getVehicles().at(vehicleIndex);
+    }
+
+    //exit the system
+    exit(0);
 }
 
 

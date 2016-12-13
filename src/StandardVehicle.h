@@ -15,7 +15,7 @@ public:
     /*
      * Constructor
      */
-    StandardVehicle(unsigned int vehicleId, Manufacturer carManufacturer, Color color);
+    StandardVehicle(unsigned int vehicleId, char carManufacturer, char color);
 
 };
 

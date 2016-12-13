@@ -2,5 +2,7 @@
 #include "StandardVehicle.h"
 
 StandardVehicle::StandardVehicle(unsigned int vehicleId,
-                                 Manufacturer carManufacturer, Color color)
-        : Vehicle(vehicleId, carManufacturer, color) {}
+                                 char carManufacturer, char color)
+        : Vehicle(vehicleId, carManufacturer, color) {
+    tariff = 1;
+}

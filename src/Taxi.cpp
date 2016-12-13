@@ -1,10 +1,13 @@
 
 #include "Taxi.h"
 
-Taxi::Taxi(Driver *driver, Vehicle *vehicle, const Point &currentPosition, Trip *trip) : driver(
-        driver), vehicle(vehicle), currentPosition(currentPosition), trip(trip) {}
+Taxi::Taxi(Driver *driver, Vehicle *vehicle, const Point &currentPosition,
+           Trip *trip) : driver(
+        driver), vehicle(vehicle), currentPosition(currentPosition),
+                         trip(trip) {}
 
-Taxi::Taxi(Driver *driver, Vehicle *vehicle, const Point &currentPosition) : driver(
+Taxi::Taxi(Driver *driver, Vehicle *vehicle, const Point &currentPosition)
+        : driver(
         driver), vehicle(vehicle), currentPosition(currentPosition), trip(0) {}
 
 Taxi::~Taxi() {
@@ -53,10 +56,24 @@ void Taxi::setPassengers(const std::vector<Passenger> &passengers) {
 
 void Taxi::updateSatisfaction() {
 
+    unsigned satisfation    = 0;
+    unsigned numOfCustomers = 0;
+    unsigned newAverage     = 0;
+
+    for (int i = 0; i < passengers.size(); ++i) {
+
+        satisfation    = driver->getAvgSatisfaction();
+        numOfCustomers = driver->getCounterOfCustomers();
+        newAverage     = satisfation + ((passengers.at(i).generateSatisfaction()
+                                         - satisfation) / numOfCustomers);
+        driver->setAvgSatisfaction(newAverage);
+    }
 }
 
 void Taxi::endTrip() {
 
+    delete trip;
+    trip = 0;
 }
 
 

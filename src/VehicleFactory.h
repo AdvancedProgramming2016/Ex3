@@ -13,7 +13,7 @@ class VehicleFactory {
 
 public:
     Vehicle* makeVehicle(int id, int vehicleType,
-                        Manufacturer manufacturer, Color color);
+                        char manufacturer, char color);
 };
 
 

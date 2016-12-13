@@ -34,11 +34,19 @@ void TaxiCenter::addVehicle(Vehicle *vehicle) {
 }
 
 Trip* TaxiCenter::answerCall() {
-
+    // not implemented yet
 }
 
-void TaxiCenter::createTaxi() {
+void TaxiCenter::createTaxi(Driver *driver) {
 
+    for (int i = 0; i < vehicles.size(); ++i) {
+
+        if(driver->getDriverId() == vehicles.at(i)->getVehicleId()){
+
+            Taxi * taxi = new Taxi(driver, vehicles.at(i), Point(0,0));
+            addTaxi(taxi);
+        }
+    }
 }
 
 void TaxiCenter::registerObserver(IObserver *observer) {
@@ -60,5 +68,11 @@ const std::vector<IObserver> &TaxiCenter::getObservers() const {
 void TaxiCenter::printDriverLocation(const Driver &driver) {
 
 }
+
+void TaxiCenter::addTaxi(Taxi *taxi) {
+
+    taxis.push_back(taxi);
+}
+
 
 

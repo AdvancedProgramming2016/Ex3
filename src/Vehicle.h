@@ -2,25 +2,6 @@
 #ifndef EX2_VEHICLE_H
 #define EX2_VEHICLE_H
 
-
-enum Color {
-    RED,
-    BLUE,
-    GREEN,
-    PINK,
-    WHITE
-};
-
-/**
- * This enum represents the car manufacurer.
- */
-enum Manufacturer {
-    HONDA,
-    SUBARU,
-    TESLA,
-    FIAT
-};
-
 /**
  * The class represents an abstract vehicle.
  */
@@ -28,10 +9,10 @@ enum Manufacturer {
 class Vehicle {
 
 private:
-    unsigned     vehicleId;
-    unsigned     kmPassed;
-    Manufacturer carManufacturer;
-    Color        color;
+    unsigned vehicleId;
+    unsigned kmPassed;
+    char     carManufacturer;
+    char     color;
 
 protected:
     unsigned maxCapacity; //TODO decide how to use those
@@ -42,7 +23,7 @@ public:
     /*
      * Constructor
      */
-    Vehicle(unsigned int vehicleId, Manufacturer carManufacturer, Color color);
+    Vehicle(unsigned int vehicleId, char carManufacturer, char color);
 
     /*
      * Returns the vehicle id.
@@ -57,12 +38,12 @@ public:
     /*
      * Returns the type(enum) of the car manufacturer
      */
-    Manufacturer getCarManufacturer() const;
+    char getCarManufacturer() const;
 
     /*
      * Returns the color(enum) of the vehicle
      */
-    Color getColor() const;
+    char getColor() const;
 
     /*
      * Returns the number of the maximum passenger capacity a vehicle can hold.
