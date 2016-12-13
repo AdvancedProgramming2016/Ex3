@@ -28,9 +28,9 @@ public:
     /*
      * Constructor.
      */
-    Trip(unsigned int rideId, const Point &startPoint, unsigned,
+    Trip(unsigned int rideId, const Point &startPoint,
          const Point &endPoint, unsigned int numOfPassengers,
-         unsigned int tariff);
+         double tariff);
 
     /*
      * Destructor.
