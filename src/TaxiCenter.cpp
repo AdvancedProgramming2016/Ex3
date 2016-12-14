@@ -6,6 +6,35 @@ TaxiCenter::TaxiCenter(Point *taxiCenterLocation) : taxiCenterLocation(
 
 TaxiCenter::~TaxiCenter() {
 
+    Trip *tempTrip = 0;
+
+    //delete all the trips
+    while (!trips.empty()) {
+
+        //Save trip instance in a temporary pointer.
+        tempTrip = trips.front();
+        trips.pop();
+
+        //Delete the trip and pop the queue.
+        delete tempTrip;
+    }
+
+    //delete all the taxis.
+    for (int taxisIndex = 0; taxisIndex < taxis.size(); ++taxisIndex) {
+        delete taxis[taxisIndex];
+    }
+
+    for (int driversIndex = 0; driversIndex < drivers.size(); ++driversIndex) {
+        delete drivers[driversIndex];
+    }
+
+    //delete all the vehicles.
+    //TODO: there is a confusion between int and unsigned
+    for (int vehiclesIndex = 0;
+         vehiclesIndex < vehicles.size(); ++vehiclesIndex) {
+        delete vehicles[vehiclesIndex];
+    }
+
 }
 
 std::vector<Driver *> &TaxiCenter::getDrivers() {
