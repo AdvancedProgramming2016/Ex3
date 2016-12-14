@@ -28,30 +28,28 @@ void Grid::build_relations() {
 
         for (int j = 0; j < m_width; ++j) {
 
-            if (j < m_width - 1) {
-
-                m_edges.at(counter).add_relation(
-                        *get_vertex(Point(i, j + 1))); //right relationship
-            }
-
             if (i > 0) {
 
-                m_edges.at(counter).add_relation(
-                        *get_vertex(Point(i - 1, j))); //upper relationship
+                //upper relationship
+                m_edges.at(counter).add_relation(*get_vertex(Point(i - 1, j)));
+            }
+
+            if (j < m_width - 1) {
+
+                //right relationship
+                m_edges.at(counter).add_relation(*get_vertex(Point(i, j + 1)));
+            }
+
+            if (i < m_length - 1) {
+
+                //lower relationship
+                m_edges.at(counter).add_relation(*get_vertex(Point(i + 1, j)));
             }
 
             if (j > 0) {
 
-                m_edges.at(counter).add_relation(
-                        *get_vertex(Point(i, j - 1))); //left relationship
-            }
-
-
-            if (i < m_length - 1) {
-
-
-                m_edges.at(counter).add_relation(
-                        *get_vertex(Point(i + 1, j))); //lower relationship
+                //left relationship
+                m_edges.at(counter).add_relation(*get_vertex(Point(i, j - 1)));
             }
 
             counter++;
