@@ -9,6 +9,7 @@
  * The class represents a trip, which a taxi takes along the map, from one point to another.
  */
 class Taxi;
+class Point;
 
 class Trip {
 

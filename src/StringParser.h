@@ -12,6 +12,8 @@
 #include "VehicleFactory.h"
 #include "MainFlow.h"
 
+class TaxiCenter;
+
 class StringParser: public BaseParser {
 
 private:
