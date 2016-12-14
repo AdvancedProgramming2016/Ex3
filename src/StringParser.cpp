@@ -42,12 +42,16 @@ Driver* StringParser::parseDriverInput() {
 
 Graph* StringParser::parseGridInput() {
 
-    int width, height;
+    int width;
+    int height;
 
     // Receive input from the user
     std::cin >> width;
     std::cin >> height;
+
+    //TODO: Need to do something with obstacles
     std::vector<Point> obstacles;
+
     // Create instance of graph
     Graph *graph = new Grid(height, width, obstacles);
     return graph;
@@ -56,7 +60,12 @@ Graph* StringParser::parseGridInput() {
 
 Trip* StringParser::parseTripInput() {
 
-    unsigned int id, startX, startY, endX, endY, numOfPassengers;
+    unsigned int id;
+    unsigned int startX;
+    unsigned int startY;
+    unsigned int endX;
+    unsigned int endY;
+    unsigned int numOfPassengers;
     double tariff;
 
     std::cin >> id;
