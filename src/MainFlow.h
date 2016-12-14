@@ -7,6 +7,7 @@
 #include "Grid.h"
 #include "VehicleFactory.h"
 #include "BaseParser.h"
+#include "StringParser.h"
 
 class MainFlow {
 
@@ -67,6 +68,7 @@ public:
      * Exits the taxiCenter system by deleting all the instances and exiting.
      */
     void exitSystem();
+
 };
 
 

@@ -8,6 +8,7 @@
 #include "Driver.h"
 #include "Trip.h"
 #include "Grid.h"
+#include "MainFlow.h"
 
 
 StringParser::StringParser() {
@@ -93,5 +94,17 @@ Vehicle* StringParser::parseVehicleInput() {
 
     return this->vehicleFactory.makeVehicle(id, taxiType, manufacturer, color);
 
+}
+
+int StringParser::addNewDriver(TaxiCenter &taxiCenter, Driver *driver) {
+    taxiCenter.getDrivers().push_back(driver);
+}
+
+int StringParser::addNewVehicle(TaxiCenter &taxiCenter, Vehicle *vehicle) {
+    taxiCenter.getVehicles().push_back(vehicle);
+}
+
+int StringParser::addNewTrip(TaxiCenter &taxiCenter, Trip *trip) {
+    taxiCenter.getTrips().push(trip);
 }
 

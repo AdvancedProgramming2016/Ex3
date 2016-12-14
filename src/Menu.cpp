@@ -6,8 +6,16 @@
 #include "Menu.h"
 #include "Driver.h"
 
-Menu::Menu() {
+Menu::Menu(TaxiCenter *taxiCenter) {
+    this->taxiCenter = taxiCenter;
+}
 
+MainFlow Menu::getMainFlow() {
+    return this->mainFlow;
+}
+
+TaxiCenter *Menu::getTaxiCenter() {
+    return this->taxiCenter;
 }
 
 int Menu::initializeGame() {
@@ -36,17 +44,17 @@ int Menu::runMenu() {
 
             // Create driver
             case 1:
-                this->stringParser.parseDriverInput();
+                this->getTaxiCenter()->addDriver(this->stringParser.parseDriverInput());
                 break;
 
             // Create trip
             case 2:
-                this->stringParser.parseTripInput();
+                this->getTaxiCenter()->addTrip(this->stringParser.parseTripInput());
                 break;
 
             // Create vehicle
             case 3:
-                this->stringParser.parseVehicleInput();
+                this->getTaxiCenter()->addVehicle(this->stringParser.parseVehicleInput());
                 break;
 
             // Request for driver location
@@ -55,11 +63,11 @@ int Menu::runMenu() {
 
             // Start Driving
             case 6:
-                this->mainFlow.startDriving();
+                this->getMainFlow().startDriving();
                 break;
 
             case 7:
-                delete this->mainFlow;
+                delete this->getMainFlow();
                 exit(1);
 
             // Invalid input
@@ -71,3 +79,4 @@ int Menu::runMenu() {
     } while (userOption < 7);
 
 }
+

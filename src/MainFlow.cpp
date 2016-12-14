@@ -47,43 +47,28 @@ Grid *MainFlow::getMap() const {
 
 void MainFlow::startDriving() {
 
-    unsigned int i;
-    Vehicle *currVehicle;
-    std::vector<Driver *> driverVec = this->taxiCenter->getDrivers();
-    std::vector<Vehicle *> vehicleVec = this->taxiCenter->getVehicles();
+    unsigned int i = 0;
+    std::vector<Taxi *> taxiVec = this->taxiCenter->getTaxis();
     std::queue<Trip *> tripQueue = this->taxiCenter->getTrips();
 
-    for (i = 0; i < driverVec.size(); i++) {
+    for (i = 0; i < taxiVec.size(); i++) {
 
         // If trip queue is empty and there are not more trips
         if (tripQueue.empty()) {
             break;
+        }
+        else {
 
-        } else if (driverVec.at(i)->getVehicleId() == 0) {
-
-            int j;
-
-            // Find the relevant vehicle for a certain driver
-            for (j = 0; j < vehicleVec.size(); j++) {
-                if (vehicleVec.at(j)->getVehicleId() == driverVec.at(i)->getVehicleId()) {
-                    currVehicle = vehicleVec.at(j);
-                }
-            }
-
-            // TODO: Check what vehicle needs to be put in the constructor
-            Taxi *newTaxi = new Taxi(driverVec.at(i), currVehicle, *(new Point(0,0)), tripQueue.front());
+            // Assign trip to taxi
+            taxiVec.at(i)->setTrip(tripQueue.front());
 
             // Set the new taxi's current location to end point
-            newTaxi->setCurrentPosition(tripQueue.front()->getEndPoint());
+            taxiVec.at(i)->setCurrentPosition(tripQueue.front()->getEndPoint());
             tripQueue.pop();
-
-            // Push the new taxi to the taxi vector
-            this->taxiCenter->getTaxis().push_back(newTaxi);
-
         }
     }
-
 }
+
 
 void MainFlow::exitSystem() {
 

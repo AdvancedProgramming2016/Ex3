@@ -10,6 +10,7 @@
 #include "BaseParser.h"
 #include "Graph.h"
 #include "VehicleFactory.h"
+#include "MainFlow.h"
 
 class StringParser: public BaseParser {
 
@@ -25,6 +26,9 @@ public:
     virtual Driver* parseDriverInput();
     virtual Trip* parseTripInput();
     virtual Vehicle* parseVehicleInput();
+    virtual int addNewDriver(TaxiCenter &taxiCenter, Driver *driver);
+    virtual int addNewVehicle(TaxiCenter &taxiCenter, Vehicle *vehicle);
+    virtual int addNewTrip(TaxiCenter &taxiCenter, Trip *trip);
 
 private:
     void checkGridInput(int height, int width);

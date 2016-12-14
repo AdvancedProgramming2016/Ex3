@@ -8,6 +8,7 @@
 #include "Vehicle.h"
 #include "Taxi.h"
 #include "ISubject.h"
+#include "StringParser.h"
 
 class Driver;
 
@@ -62,6 +63,8 @@ public:
      */
     void addDriver(Driver *driver);
 
+    void addTrip(Trip *trip);
+
     /*
      * Adds a vehicle to the vehicles the taxi center has.
      */
@@ -82,6 +85,8 @@ public:
      */
     std::vector<Vehicle *> &getVehicles();
 
+    std::queue<Trip *> &getTrip();
+
     /*
      * Returns the taxis the taxi center has.
      */
@@ -100,6 +105,11 @@ public:
 
     void printDriverLocation(const Driver &driver);
 
+    friend int StringParser::addNewDriver(TaxiCenter &taxiCenter, Driver *driver);
+
+    friend int StringParser::addNewTrip(TaxiCenter &taxiCenter, Trip *trip);
+
+    friend int StringParser::addNewVehicle(TaxiCenter &taxiCenter, Vehicle *vehicle);
 };
 
 
