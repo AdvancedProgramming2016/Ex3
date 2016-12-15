@@ -15,7 +15,7 @@ StringParser::StringParser() {
 
 }
 
-void StringParser::checkGridInput(int height, int width){
+void StringParser::checkGridInput(int height, int width) {
 
 }
 
@@ -23,7 +23,7 @@ int StringParser::checkUserInput(char *stringToCheck) {
 
 }
 
-Driver* StringParser::parseDriverInput() {
+Driver *StringParser::parseDriverInput() {
 
     unsigned int id;
     unsigned int age;
@@ -41,7 +41,7 @@ Driver* StringParser::parseDriverInput() {
 
 }
 
-Graph* StringParser::parseGridInput() {
+Graph *StringParser::parseGridInput() {
 
     int width;
     int height;
@@ -49,6 +49,7 @@ Graph* StringParser::parseGridInput() {
     // Receive input from the user
     std::cin >> width;
     std::cin >> height;
+    //std::cin >> obstacles;
 
     //TODO: Need to do something with obstacles
     std::vector<Point> obstacles;
@@ -59,7 +60,7 @@ Graph* StringParser::parseGridInput() {
 
 }
 
-Trip* StringParser::parseTripInput() {
+Trip *StringParser::parseTripInput() {
 
     unsigned int id;
     unsigned int startX;
@@ -77,12 +78,14 @@ Trip* StringParser::parseTripInput() {
     std::cin >> numOfPassengers;
     std::cin >> tariff;
 
-    return new Trip(id, new Point(startX, startY), new Point(endX, endY), numOfPassengers, tariff);
-
+    Point sPoint(startX, startY);
+    Point ePoint(endX, endY);
+    return new Trip(id, sPoint , ePoint,
+                    numOfPassengers, tariff);
 
 }
 
-Vehicle* StringParser::parseVehicleInput() {
+Vehicle *StringParser::parseVehicleInput() {
 
     int id, taxiType;
     char manufacturer, color;
@@ -107,4 +110,3 @@ int StringParser::addNewVehicle(TaxiCenter &taxiCenter, Vehicle *vehicle) {
 int StringParser::addNewTrip(TaxiCenter &taxiCenter, Trip *trip) {
     taxiCenter.getTrips().push(trip);
 }
-

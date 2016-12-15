@@ -22,9 +22,9 @@ int Menu::initializeGame() {
 
     //Create Grid with obstacles.
     this->stringParser.parseGridInput();
- }
+}
 
-int checkUserInput(int userSelection){
+int checkUserInput(int userSelection) {
 
     if (userSelection > 7) {
         return 1;
@@ -40,28 +40,31 @@ int Menu::runMenu() {
 
         std::cin >> userOption;
 
-        switch(userOption) {
+        switch (userOption) {
 
             // Create driver
             case 1:
-                this->getTaxiCenter()->addDriver(this->stringParser.parseDriverInput());
+                this->getTaxiCenter()->addDriver(
+                        this->stringParser.parseDriverInput());
                 break;
 
-            // Create trip
+                // Create trip
             case 2:
-                this->getTaxiCenter()->addTrip(this->stringParser.parseTripInput());
+                this->getTaxiCenter()->addTrip(
+                        this->stringParser.parseTripInput());
                 break;
 
-            // Create vehicle
+                // Create vehicle
             case 3:
-                this->getTaxiCenter()->addVehicle(this->stringParser.parseVehicleInput());
+                this->getTaxiCenter()->addVehicle(
+                        this->stringParser.parseVehicleInput());
                 break;
 
-            // Request for driver location
+                // Request for driver location
             case 4:
                 break;
 
-            // Start Driving
+                // Start Driving
             case 6:
                 this->getMainFlow().startDriving();
                 break;
@@ -70,7 +73,7 @@ int Menu::runMenu() {
                 delete this->getMainFlow();
                 exit(1);
 
-            // Invalid input
+                // Invalid input
             default:
                 exit(1);
 

@@ -25,6 +25,10 @@ unsigned int Trip::getNumOfPassengers() const {
     return numOfPassengers;
 }
 
+void Trip::setTariff(double newTariff) {
+    this->tariff = newTariff;
+}
+
 double Trip::getTariff() const {
     return tariff;
 }

@@ -27,8 +27,8 @@ unsigned int Vehicle::getMaxCapacity() const {
     return maxCapacity;
 }
 
-double Vehicle::getTariff() const {
-    return tariff;
+double Vehicle::getCoefficient() const {
+    return coefficient;
 }
 
 unsigned int Vehicle::getSpeedLimit() const {

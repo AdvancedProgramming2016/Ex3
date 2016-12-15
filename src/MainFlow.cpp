@@ -53,18 +53,29 @@ void MainFlow::startDriving() {
 
     for (i = 0; i < taxiVec.size(); i++) {
 
+        Trip *currTrip = tripQueue.front();
+        Taxi *currTaxi = taxiVec.at(i);
+
         // If trip queue is empty and there are not more trips
         if (tripQueue.empty()) {
             break;
         }
+        else if (currTaxi->getTrip() != 0) {
+            continue;
+        }
         else {
 
+            // Calculate new coefficient according to vehicle type
+            currTrip->setTariff(currTrip->getTariff()
+                                * currTaxi->getVehicle()->getCoefficient());
+
             // Assign trip to taxi
-            taxiVec.at(i)->setTrip(tripQueue.front());
+            currTaxi->setTrip(currTrip);
 
             // Set the new taxi's current location to end point
-            taxiVec.at(i)->setCurrentPosition(tripQueue.front()->getEndPoint());
+            currTaxi->setCurrentPosition(currTrip->getEndPoint());
             tripQueue.pop();
+
         }
     }
 }

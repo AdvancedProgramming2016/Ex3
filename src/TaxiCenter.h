@@ -85,8 +85,6 @@ public:
      */
     std::vector<Vehicle *> &getVehicles();
 
-    std::queue<Trip *> &getTrip();
-
     /*
      * Returns the taxis the taxi center has.
      */

@@ -108,10 +108,6 @@ void TaxiCenter::addTaxi(Taxi *taxi) {
     taxis.push_back(taxi);
 }
 
-std::queue<Trip *> &TaxiCenter::getTrip() {
-    return this->trips;
-}
-
 void TaxiCenter::addTrip(Trip *trip) {
     this->trips.push(trip);
 }

@@ -16,7 +16,7 @@ private:
 
 protected:
     unsigned maxCapacity; //TODO decide how to use those
-    double   tariff;      // TODO that too
+    double   coefficient;      // TODO that too
 
 public:
 
@@ -51,9 +51,9 @@ public:
     unsigned int getMaxCapacity() const;
 
     /*
-     * Returns the vehicle tariff
+     * Returns the vehicle coefficient
      */
-    double getTariff() const;
+    double getCoefficient() const;
 
     /*
      * Returns the vehicle's speed limit.

@@ -53,9 +53,14 @@ public:
     unsigned int getNumOfPassengers() const;
 
     /*
-     * Returns the trip tariff
+     * Returns the trip coefficient
      */
     double getTariff() const;
+
+    /*
+     * Set the new trip coefficient
+     */
+    void setTariff(double newTariff);
 
     /*
      * Returns the taxi that is taking the trip.
