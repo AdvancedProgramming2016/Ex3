@@ -71,6 +71,9 @@ void MainFlow::startDriving() {
             currTaxi->setCurrentPosition(currTrip->getEndPoint());
             tripQueue.pop();
 
+            //Make the driver available to take another trip.
+            currTaxi->setTrip(0);
+
         }
     }
 }
