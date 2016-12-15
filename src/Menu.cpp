@@ -62,6 +62,7 @@ int Menu::runMenu() {
 
                 // Request for driver location
             case 4:
+                this->getTaxiCenter()->requestDriverLocation(this->stringParser.parseDriverLocation());
                 break;
 
                 // Start Driving

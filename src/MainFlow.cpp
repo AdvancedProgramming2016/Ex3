@@ -2,13 +2,7 @@
 #include "MainFlow.h"
 
 MainFlow::MainFlow() {
-
-}
-
-MainFlow::~MainFlow() {
-
-    delete taxiCenter;
-    delete map;
+//TODO remove this
 }
 
 void MainFlow::createMap(unsigned height, unsigned width) {
@@ -72,6 +66,7 @@ void MainFlow::startDriving() {
             // Assign trip to taxi
             currTaxi->setTrip(currTrip);
 
+            //TODO make sure it is added to the original queue and not as a copy, might want to use a pointer.
             // Set the new taxi's current location to end point
             currTaxi->setCurrentPosition(currTrip->getEndPoint());
             tripQueue.pop();
@@ -83,24 +78,8 @@ void MainFlow::startDriving() {
 
 void MainFlow::exitSystem() {
 
-    //delete all the taxis.
-    for (int taxiIndex = 0;
-         taxiIndex < taxiCenter->getTaxis().size(); ++taxiIndex) {
-        delete taxiCenter->getTaxis().at(taxiIndex);
-    }
-
-    //delete all the drivers.
-    for (int driverIndex = 0;
-         driverIndex < taxiCenter->getDrivers().size(); ++driverIndex) {
-        delete taxiCenter->getDrivers().at(driverIndex);
-    }
-
-    //delete all the vehicles.
-    //TODO: there is a confusion between int and unsigned
-    for (int vehicleIndex = 0;
-         vehicleIndex < taxiCenter->getVehicles().size(); ++vehicleIndex) {
-        delete taxiCenter->getVehicles().at(vehicleIndex);
-    }
+    delete taxiCenter;
+    delete map;
 
     //exit the system
     exit(0);

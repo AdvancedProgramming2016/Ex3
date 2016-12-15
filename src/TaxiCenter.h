@@ -33,7 +33,7 @@ private:
     std::vector<Taxi *>    taxis;
     std::queue<Trip *>     trips;
     Point                  *taxiCenterLocation;
-    std::vector<IObserver> observers;
+    std::vector<IObserver*> observers;
 
     void addTaxi(Taxi *taxi);
 
@@ -56,7 +56,7 @@ public:
     */
     void createTaxi(Driver *driver);
 
-    const std::vector<IObserver> &getObservers() const;
+    const std::vector<IObserver*> &getObservers() const;
 
     /*
      * Add a driver to the drivers the taxi center has.
@@ -95,19 +95,18 @@ public:
      */
     std::queue<Trip *> &getTrips();
 
-    virtual void registerObserver(IObserver *observer);
+    /*
+     * Prints the requested driver's location.
+     */
+    void requestDriverLocation(int driverId);
 
-    virtual void unregisterObserver(IObserver *observer);
+    virtual int registerObserver(IObserver *observer);
 
-    virtual void notifyObserver();
+    virtual int unregisterObserver(IObserver *observer);
+
+    virtual void notifyObservers();
 
     void printDriverLocation(const Driver &driver);
-
-    friend int StringParser::addNewDriver(TaxiCenter &taxiCenter, Driver *driver);
-
-    friend int StringParser::addNewTrip(TaxiCenter &taxiCenter, Trip *trip);
-
-    friend int StringParser::addNewVehicle(TaxiCenter &taxiCenter, Vehicle *vehicle);
 };
 
 

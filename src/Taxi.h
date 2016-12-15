@@ -8,6 +8,7 @@
 #include "Point.h"
 #include "Passenger.h"
 #include "Trip.h"
+#include "IObserver.h"
 
 class Driver;
 
@@ -15,7 +16,7 @@ class Driver;
  * The class represents a taxi which is made up of a driver and a vehicle.
  * It can switch both the driver and the vehicle during its existance.
  */
-class Taxi {
+class Taxi : public IObserver {
 
 private:
 
@@ -95,6 +96,11 @@ public:
     void setPassengers(const std::vector<Passenger> &passengers);
 
     void endTrip();
+
+    /*
+     * Send update about the driver.
+     */
+    virtual void update(ISubject *subject);
 
 };
 

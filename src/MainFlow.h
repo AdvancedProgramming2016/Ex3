@@ -9,11 +9,13 @@
 #include "BaseParser.h"
 #include "StringParser.h"
 
+class TaxiCenter;
+
 class MainFlow {
 
 private:
 
-    BaseParser     parser;
+    BaseParser     *parser;
     TaxiCenter     *taxiCenter;
     Grid           *map;
     VehicleFactory vehicleFactory;
@@ -24,11 +26,6 @@ public:
      * Constructor.
      */
     MainFlow(); //TODO maybe make as a singleton
-
-    /*
-     * Destructor.
-     */
-    virtual ~MainFlow();
 
     void startDriving();
 

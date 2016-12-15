@@ -75,27 +75,49 @@ void TaxiCenter::createTaxi(Driver *driver) {
 
     for (int i = 0; i < vehicles.size(); ++i) {
 
-        if (driver->getDriverId() == vehicles.at(i)->getVehicleId()) {
+        if (driver->getDriverId() == vehicles[i]->getVehicleId()) {
 
-            Taxi *taxi = new Taxi(driver, vehicles.at(i), Point(0, 0));
+            Taxi *taxi = new Taxi(driver, vehicles[i], Point(0, 0));
             addTaxi(taxi);
         }
     }
 }
 
-void TaxiCenter::registerObserver(IObserver *observer) {
+int TaxiCenter::registerObserver(IObserver *observer) {
+
+    unsigned initSize = observers.size();
+
+    observers.push_back(observer);
+
+    if (initSize + 1 == observers.size()) {
+        return 1;
+    }
+
+    return 0;
 
 }
 
-void TaxiCenter::unregisterObserver(IObserver *observer) {
+int TaxiCenter::unregisterObserver(IObserver *observer) {
 
+    for (int i = 0; i < observers.size(); ++i) {
+
+        if (observers[i] == observer) {
+            observers.erase(observers.begin() + i);
+            return 1;
+        }
+    }
+
+    return 0;
 }
 
-void TaxiCenter::notifyObserver() {
+void TaxiCenter::notifyObservers() {
 
+    for (int i = 0; i < observers.size(); ++i) {
+        observers[i]->update(this);
+    }
 }
 
-const std::vector<IObserver> &TaxiCenter::getObservers() const {
+const std::vector<IObserver *> &TaxiCenter::getObservers() const {
     return observers;
 }
 
@@ -110,6 +132,18 @@ void TaxiCenter::addTaxi(Taxi *taxi) {
 
 void TaxiCenter::addTrip(Trip *trip) {
     this->trips.push(trip);
+}
+
+void TaxiCenter::requestDriverLocation(int driverId) {
+
+
+    for (int i = 0; i < taxis.size(); ++i) {
+
+        if (taxis[i]->getDriver()->getDriverId() == driverId) {
+
+            std::cout << taxis[i]->getCurrentPosition();
+        }
+    }
 }
 
 

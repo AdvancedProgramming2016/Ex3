@@ -99,6 +99,15 @@ Vehicle *StringParser::parseVehicleInput() {
 
 }
 
+unsigned int StringParser::parseDriverLocation() {
+
+    int driverId;
+
+    std::cin >> driverId;
+
+    return driverId;
+}
+
 int StringParser::addNewDriver(TaxiCenter &taxiCenter, Driver *driver) {
     taxiCenter.getDrivers().push_back(driver);
 }
