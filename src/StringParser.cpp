@@ -1,13 +1,9 @@
-//
-// Created by commanderx on 07/12/16.
-//
+
 
 #include <cstring>
 #include <sstream>
 #include "StringParser.h"
-#include "Driver.h"
-#include "Trip.h"
-#include "Grid.h"
+
 #include "MainFlow.h"
 
 
@@ -29,7 +25,7 @@ Driver *StringParser::parseDriverInput() {
     unsigned int age;
     unsigned int experience;
     unsigned int vehicleId;
-    char status;
+    char         status;
 
     std::cin >> id;
     std::cin >> age;
@@ -43,16 +39,30 @@ Driver *StringParser::parseDriverInput() {
 
 Graph *StringParser::parseGridInput() {
 
-    int width;
-    int height;
+    int width          = 0;
+    int height         = 0;
+    int numOfObstacles = 0;
+    int x              = 0;
+    int y              = 0;
+
+
 
     // Receive input from the user
     std::cin >> width;
     std::cin >> height;
+    std::cin >> numOfObstacles;
     //std::cin >> obstacles;
 
-    //TODO: Need to do something with obstacles
     std::vector<Point> obstacles;
+
+    for (int i = 0; i < numOfObstacles; ++i) {
+        std::cin >> x;
+        std::cin >> y;
+        obstacles.push_back(Point(x, y));
+    }
+
+    //TODO: Need to do something with obstacles
+
 
     // Create instance of graph
     Graph *graph = new Grid(height, width, obstacles);
@@ -68,7 +78,7 @@ Trip *StringParser::parseTripInput() {
     unsigned int endX;
     unsigned int endY;
     unsigned int numOfPassengers;
-    double tariff;
+    double       tariff;
 
     std::cin >> id;
     std::cin >> startX;
@@ -80,14 +90,14 @@ Trip *StringParser::parseTripInput() {
 
     Point sPoint(startX, startY);
     Point ePoint(endX, endY);
-    return new Trip(id, sPoint , ePoint,
+    return new Trip(id, sPoint, ePoint,
                     numOfPassengers, tariff);
 
 }
 
 Vehicle *StringParser::parseVehicleInput() {
 
-    int id, taxiType;
+    int  id, taxiType;
     char manufacturer, color;
 
     std::cin >> id;

@@ -1,6 +1,4 @@
-//
-// Created by commanderx on 07/12/16.
-//
+
 
 #ifndef EX2_CHECK_MENU_H
 #define EX2_CHECK_MENU_H

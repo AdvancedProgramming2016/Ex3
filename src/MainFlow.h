@@ -6,9 +6,10 @@
 #include "TaxiCenter.h"
 #include "Grid.h"
 #include "VehicleFactory.h"
-#include "BaseParser.h"
 #include "StringParser.h"
 
+class BaseParser;
+class Trip;
 class TaxiCenter;
 
 class MainFlow {
