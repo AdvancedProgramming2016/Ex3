@@ -4,13 +4,12 @@
 
 #include <unwind.h>
 #include "Taxi.h"
-#include "IObserver.h"
 
 /**
  * The class represents a driver of a taxi vehicle.
  *
  */
-class Driver : public IObserver {
+class Driver {
 
 private:
 
@@ -69,11 +68,6 @@ public:
      * Returns the driver's vehicle's id number.
      */
     unsigned int getVehicleId() const;
-
-    /*
-     * Send update about the driver.
-     */
-    virtual void update(ISubject *subject);
 };
 
 

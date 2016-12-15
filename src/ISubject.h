@@ -16,17 +16,17 @@ public:
     /*
      * Adds a new observer.
      */
-    virtual void registerObserver(IObserver* observer) = 0;
+    virtual int registerObserver(IObserver* observer) = 0;
 
     /*
      * Removes a given observer.
      */
-    virtual void unregisterObserver(IObserver* observer) = 0;
+    virtual int unregisterObserver(IObserver* observer) = 0;
 
     /*
      * Notifies the observers.
      */
-    virtual void notifyObserver() = 0;
+    virtual void notifyObservers() = 0;
 };
 
 #endif //EX2_ISUBJECT_H

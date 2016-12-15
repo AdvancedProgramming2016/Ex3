@@ -41,10 +41,6 @@ unsigned int Driver::getVehicleId() const {
     return vehicleId;
 }
 
-void Driver::update(ISubject *subject) {
-
-}
-
 void Driver::setAvgSatisfaction(unsigned int newAvg) {
     avgSatisfaction = newAvg;
 }

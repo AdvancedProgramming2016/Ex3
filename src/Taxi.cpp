@@ -76,5 +76,9 @@ void Taxi::endTrip() {
     trip = 0;
 }
 
+void Taxi::update(ISubject *iSubject) {
+
+}
+
 
 

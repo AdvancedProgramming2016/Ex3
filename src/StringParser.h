@@ -28,6 +28,7 @@ public:
     virtual Driver* parseDriverInput();
     virtual Trip* parseTripInput();
     virtual Vehicle* parseVehicleInput();
+    virtual unsigned int parseDriverLocation();
     virtual int addNewDriver(TaxiCenter &taxiCenter, Driver *driver);
     virtual int addNewVehicle(TaxiCenter &taxiCenter, Vehicle *vehicle);
     virtual int addNewTrip(TaxiCenter &taxiCenter, Trip *trip);
