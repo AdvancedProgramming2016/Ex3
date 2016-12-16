@@ -64,7 +64,6 @@ Graph *StringParser::parseGridInput() {
 
     //TODO: Need to do something with obstacles
 
-
     // Create instance of graph
     Graph *graph = new Grid(height, width, obstacles);
     return graph;
@@ -80,7 +79,7 @@ Trip *StringParser::parseTripInput() {
     int endX = 3;
     int endY = 4;
     int numOfPassengers = 5;
-    int tariff =6;
+    int tariff = 6;
     std::string userInput;
     std::string inputArr[numOfParams];
 
@@ -92,7 +91,8 @@ Trip *StringParser::parseTripInput() {
     Point ePoint(atoi(inputArr[endX]), atoi(inputArr[endY]));
 
     return new Trip(atoi(inputArr[id]), sPoint, ePoint,
-                    atoi(inputArr[numOfPassengers]), std::stod(inputArr[tariff]));
+                    atoi(inputArr[numOfPassengers]),
+                    std::stod(inputArr[tariff]));
 
 }
 
@@ -118,7 +118,6 @@ Vehicle *StringParser::parseVehicleInput() {
 
 }
 
-// TODO: What is this for??
 unsigned int StringParser::parseDriverLocation() {
 
     unsigned int driverId;
@@ -141,7 +140,8 @@ int StringParser::addNewTrip(TaxiCenter &taxiCenter, Trip *trip) {
 }
 
 void StringParser::splitByComma(std::string *inputArr, int size,
-                                        std::string userInput) {
+                                std::string userInput) {
+
     std::stringstream ss(userInput);
 
     int i = 0;
