@@ -2,9 +2,6 @@
 #ifndef EX2_IOBSERVER_H
 #define EX2_IOBSERVER_H
 
-
-#include "TaxiCenter.h"
-
 /**
  * Observer interface, notifies the subject about an update that is made.
  */

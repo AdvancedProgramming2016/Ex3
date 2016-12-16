@@ -9,9 +9,10 @@
 #include "Passenger.h"
 #include "Trip.h"
 #include "IObserver.h"
+#include "ISubject.h"
 
 class Driver;
-
+class Trip;
 /**
  * The class represents a taxi which is made up of a driver and a vehicle.
  * It can switch both the driver and the vehicle during its existance.
