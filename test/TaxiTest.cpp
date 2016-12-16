@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "../src/Taxi.h"
+#include "../src/StandardVehicle.h"
 
 class TaxiTest : public ::testing::Test {
 protected:
