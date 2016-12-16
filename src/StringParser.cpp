@@ -34,9 +34,9 @@ Driver *StringParser::parseDriverInput() {
 
     this->splitByComma(inputArr, numOfParams, userInput);
 
-    return new Driver(atoi(inputArr[id]), atoi(inputArr[age]),
-                      inputArr[status][0], atoi(inputArr[experience]),
-                      atoi(inputArr[vehicleId]));
+    return new Driver(stoi(inputArr[id]), stoi(inputArr[age]),
+                      inputArr[status][0], stoi(inputArr[experience]),
+                      stoi(inputArr[vehicleId]));
 
 }
 
@@ -87,11 +87,11 @@ Trip *StringParser::parseTripInput() {
 
     this->splitByComma(inputArr, numOfParams, userInput);
 
-    Point sPoint(atoi(inputArr[startX]), atoi(inputArr[startY]));
-    Point ePoint(atoi(inputArr[endX]), atoi(inputArr[endY]));
+    Point sPoint(stoi(inputArr[startX]), stoi(inputArr[startY]));
+    Point ePoint(stoi(inputArr[endX]), stoi(inputArr[endY]));
 
-    return new Trip(atoi(inputArr[id]), sPoint, ePoint,
-                    atoi(inputArr[numOfPassengers]),
+    return new Trip(stoi(inputArr[id]), sPoint, ePoint,
+                    stoi(inputArr[numOfPassengers]),
                     std::stod(inputArr[tariff]));
 
 }
@@ -111,11 +111,10 @@ Vehicle *StringParser::parseVehicleInput() {
     // Splits the user input by commas and returns array of inputs
     this->splitByComma(inputArr, numOfinputs, userInput);
 
-    return this->vehicleFactory.makeVehicle(atoi(inputArr[id]),
-                                            atoi(inputArr[taxiType]),
+    return this->vehicleFactory.makeVehicle(stoi(inputArr[id]),
+                                            stoi(inputArr[taxiType]),
                                             inputArr[manufacturer][0],
                                             inputArr[color][0]);
-
 }
 
 unsigned int StringParser::parseDriverLocation() {
