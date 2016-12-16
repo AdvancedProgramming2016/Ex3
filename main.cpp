@@ -6,7 +6,9 @@
 
 int main(int argc, char *argv[]) {
 
-    //Menu menu;
+    Menu menu;
+    menu.initializeGame();
+    menu.runMenu();
 
 
 
