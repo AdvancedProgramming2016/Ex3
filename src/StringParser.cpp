@@ -21,31 +21,32 @@ int StringParser::checkUserInput(char *stringToCheck) {
 
 Driver *StringParser::parseDriverInput() {
 
-    unsigned int id;
-    unsigned int age;
-    unsigned int experience;
-    unsigned int vehicleId;
-    char         status;
+    int numOfParams = 5;
+    int id = 0;
+    int age = 1;
+    int experience = 2;
+    int vehicleId = 3;
+    int status = 4;
+    std::string inputArr[numOfParams];
+    std::string userInput;
 
-    std::cin >> id;
-    std::cin >> age;
-    std::cin >> status;
-    std::cin >> experience;
-    std::cin >> vehicleId;
+    std::cin >> userInput;
 
-    return new Driver(id, age, status, experience, vehicleId);
+    this->splitByComma(inputArr, numOfParams, userInput);
+
+    return new Driver(atoi(inputArr[id]), atoi(inputArr[age]),
+                      inputArr[status][0], atoi(inputArr[experience]),
+                      atoi(inputArr[vehicleId]));
 
 }
 
 Graph *StringParser::parseGridInput() {
 
-    int width          = 0;
-    int height         = 0;
+    int width = 0;
+    int height = 0;
     int numOfObstacles = 0;
-    int x              = 0;
-    int y              = 0;
-
-
+    int x = 0;
+    int y = 0;
 
     // Receive input from the user
     std::cin >> width;
@@ -72,46 +73,55 @@ Graph *StringParser::parseGridInput() {
 
 Trip *StringParser::parseTripInput() {
 
-    unsigned int id;
-    unsigned int startX;
-    unsigned int startY;
-    unsigned int endX;
-    unsigned int endY;
-    unsigned int numOfPassengers;
-    double       tariff;
+    int numOfParams = 7;
+    int id = 0;
+    int startX = 1;
+    int startY = 2;
+    int endX = 3;
+    int endY = 4;
+    int numOfPassengers = 5;
+    int tariff =6;
+    std::string userInput;
+    std::string inputArr[numOfParams];
 
-    std::cin >> id;
-    std::cin >> startX;
-    std::cin >> startY;
-    std::cin >> endX;
-    std::cin >> endY;
-    std::cin >> numOfPassengers;
-    std::cin >> tariff;
+    std::cin >> userInput;
 
-    Point sPoint(startX, startY);
-    Point ePoint(endX, endY);
-    return new Trip(id, sPoint, ePoint,
-                    numOfPassengers, tariff);
+    this->splitByComma(inputArr, numOfParams, userInput);
+
+    Point sPoint(atoi(inputArr[startX]), atoi(inputArr[startY]));
+    Point ePoint(atoi(inputArr[endX]), atoi(inputArr[endY]));
+
+    return new Trip(atoi(inputArr[id]), sPoint, ePoint,
+                    atoi(inputArr[numOfPassengers]), std::stod(inputArr[tariff]));
 
 }
 
 Vehicle *StringParser::parseVehicleInput() {
 
-    int  id, taxiType;
-    char manufacturer, color;
+    int numOfinputs = 4;
+    int id = 0;
+    int taxiType = 1;
+    int manufacturer = 2;
+    int color = 3;
+    std::string inputArr[numOfinputs];
+    std::string userInput;
 
-    std::cin >> id;
-    std::cin >> taxiType;
-    std::cin >> manufacturer;
-    std::cin >> color;
+    std::cin >> userInput;
 
-    return this->vehicleFactory.makeVehicle(id, taxiType, manufacturer, color);
+    // Splits the user input by commas and returns array of inputs
+    this->splitByComma(inputArr, numOfinputs, userInput);
+
+    return this->vehicleFactory.makeVehicle(atoi(inputArr[id]),
+                                            atoi(inputArr[taxiType]),
+                                            inputArr[manufacturer][0],
+                                            inputArr[color][0]);
 
 }
 
+// TODO: What is this for??
 unsigned int StringParser::parseDriverLocation() {
 
-    int driverId;
+    unsigned int driverId;
 
     std::cin >> driverId;
 
@@ -128,4 +138,16 @@ int StringParser::addNewVehicle(TaxiCenter &taxiCenter, Vehicle *vehicle) {
 
 int StringParser::addNewTrip(TaxiCenter &taxiCenter, Trip *trip) {
     taxiCenter.getTrips().push(trip);
+}
+
+void StringParser::splitByComma(std::string *inputArr, int size,
+                                        std::string userInput) {
+    std::stringstream ss(userInput);
+
+    int i = 0;
+    // Split the input by commas
+    for (i = 0; i < size; i++) {
+        std::getline(ss, inputArr[i], ',');
+    }
+
 }

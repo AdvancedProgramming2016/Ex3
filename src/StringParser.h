@@ -21,6 +21,9 @@ public:
 
     StringParser();
 
+    void
+    splitByComma(std::string *inputArr, int size, std::string userInput);
+
     virtual Graph *parseGridInput();
 
     virtual int checkUserInput(char *stringToCheck);
