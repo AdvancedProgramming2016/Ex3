@@ -1,9 +1,16 @@
+//
+// Created by commanderx on 07/12/16.
+//
 
-
+#include "Menu.h"
 #include "Menu.h"
 #include "Driver.h"
 
-MainFlow Menu::getMainFlow() {
+Menu::Menu(TaxiCenter *taxiCenter) {
+    this->taxiCenter = taxiCenter;
+}
+
+MainFlow* Menu::getMainFlow() {
     return this->mainFlow;
 }
 
@@ -21,11 +28,12 @@ int checkUserInput(int userSelection) {
     return 0;
 }
 
+
 int Menu::runMenu() {
 
     int userOption = 0;
 
-    do {
+    while (userOption < 7) {
 
         std::cin >> userOption;
 
@@ -69,7 +77,6 @@ int Menu::runMenu() {
 
         }
 
-    } while (userOption < 7);
+    }
 
 }
-

@@ -13,15 +13,14 @@ class Menu {
 private:
     StringParser stringParser;
     MainFlow mainFlow;
-    TaxiCenter *taxiCenter;
 
 public:
 
-    Menu(TaxiCenter *taxiCenter);
+    Menu();
     int initializeGame();
     int checkUserInput(int userSelection);
     int runMenu();
-    MainFlow getMainFlow();
+    MainFlow* getMainFlow();
 
 };
 
