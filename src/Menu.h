@@ -7,6 +7,7 @@
 #include "Driver.h"
 #include "StringParser.h"
 #include "MainFlow.h"
+#include "TaxiCenter.h"
 
 class Menu {
 
@@ -20,7 +21,7 @@ public:
     int initializeGame();
     int checkUserInput(int userSelection);
     int runMenu();
-    MainFlow* getMainFlow();
+    MainFlow getMainFlow();
 
 };
 
