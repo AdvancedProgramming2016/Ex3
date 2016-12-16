@@ -21,7 +21,6 @@ public:
     int initializeGame();
     int checkUserInput(int userSelection);
     int runMenu();
-    TaxiCenter *getTaxiCenter();
     MainFlow getMainFlow();
 
 };

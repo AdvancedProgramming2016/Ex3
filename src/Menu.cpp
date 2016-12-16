@@ -14,10 +14,6 @@ MainFlow Menu::getMainFlow() {
     return this->mainFlow;
 }
 
-TaxiCenter *Menu::getTaxiCenter() {
-    return this->taxiCenter;
-}
-
 int Menu::initializeGame() {
 
     //Create Grid with obstacles.
@@ -44,25 +40,26 @@ int Menu::runMenu() {
 
             // Create driver
             case 1:
-                this->getTaxiCenter()->addDriver(
+                this->getMainFlow().getTaxiCenter()->addDriver(
                         this->stringParser.parseDriverInput());
                 break;
 
                 // Create trip
             case 2:
-                this->getTaxiCenter()->addTrip(
+                this->getMainFlow().getTaxiCenter()->addTrip(
                         this->stringParser.parseTripInput());
                 break;
 
                 // Create vehicle
             case 3:
-                this->getTaxiCenter()->addVehicle(
+                this->getMainFlow().getTaxiCenter()->addVehicle(
                         this->stringParser.parseVehicleInput());
                 break;
 
                 // Request for driver location
             case 4:
-                this->getTaxiCenter()->requestDriverLocation(this->stringParser.parseDriverLocation());
+                this->getMainFlow().getTaxiCenter()->requestDriverLocation(
+                        this->stringParser.parseDriverLocation());
                 break;
 
                 // Start Driving
@@ -71,8 +68,7 @@ int Menu::runMenu() {
                 break;
 
             case 7:
-                delete this->getMainFlow();
-                exit(1);
+                this->getMainFlow().exitSystem();
 
                 // Invalid input
             default:

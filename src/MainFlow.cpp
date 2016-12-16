@@ -66,7 +66,6 @@ void MainFlow::startDriving() {
             // Assign trip to taxi
             currTaxi->setTrip(currTrip);
 
-            //TODO make sure it is added to the original queue and not as a copy, might want to use a pointer.
             // Set the new taxi's current location to end point
             currTaxi->setCurrentPosition(currTrip->getEndPoint());
             tripQueue.pop();
