@@ -2,7 +2,8 @@
 #include "MainFlow.h"
 
 MainFlow::MainFlow() {
-//TODO remove this
+
+    this->taxiCenter = new TaxiCenter(new Point(0,0));
 }
 
 void MainFlow::createMap(unsigned height, unsigned width) {

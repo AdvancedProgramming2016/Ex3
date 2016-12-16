@@ -1,14 +1,7 @@
-//
-// Created by commanderx on 07/12/16.
-//
 
-#include "Menu.h"
+
 #include "Menu.h"
 #include "Driver.h"
-
-Menu::Menu(TaxiCenter *taxiCenter) {
-    this->taxiCenter = taxiCenter;
-}
 
 MainFlow Menu::getMainFlow() {
     return this->mainFlow;
