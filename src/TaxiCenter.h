@@ -25,7 +25,7 @@ class Passenger;
  * It receives passengers calls, and assigns drivers to vehicles.
  * Searches for the best route a taxi can take to complete a trip.
  */
-class TaxiCenter : public ISubject {
+class TaxiCenter : public IObserver {
 
 private:
     std::vector<Driver *>  drivers;
@@ -33,7 +33,6 @@ private:
     std::vector<Taxi *>    taxis;
     std::queue<Trip *>     trips;
     Point                  *taxiCenterLocation;
-    std::vector<IObserver*> observers;
 
     void addTaxi(Taxi *taxi);
 
@@ -55,8 +54,6 @@ public:
     * Creates a new taxi by connecting a driver with a vehicle.
     */
     void createTaxi(Driver *driver);
-
-    const std::vector<IObserver*> &getObservers() const;
 
     /*
      * Add a driver to the drivers the taxi center has.
@@ -100,11 +97,7 @@ public:
      */
     void requestDriverLocation(int driverId);
 
-    virtual int registerObserver(IObserver *observer);
-
-    virtual int unregisterObserver(IObserver *observer);
-
-    virtual void notifyObservers();
+    virtual void update(Taxi *taxi);
 
     void printDriverLocation(const Driver &driver);
 };

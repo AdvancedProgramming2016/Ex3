@@ -76,8 +76,43 @@ void Taxi::endTrip() {
     trip = 0;
 }
 
-void Taxi::update(ISubject *iSubject) {
+int Taxi::registerObserver(IObserver *observer) {
 
+    unsigned initSize = observers.size();
+
+    observers.push_back(observer);
+
+    if (initSize + 1 == observers.size()) {
+        return 1;
+    }
+
+    return 0;
+
+}
+
+int Taxi::unregisterObserver(IObserver *observer) {
+
+    for (int i = 0; i < observers.size(); ++i) {
+
+
+        if (observers[i] == observer) {
+            observers.erase(observers.begin() + i);
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+void Taxi::notifyObservers() {
+
+    for (int i = 0; i < observers.size(); ++i) {
+        observers[i]->update(this);
+    }
+}
+
+const std::vector<IObserver *> &Taxi::getObservers() const {
+    return observers;
 }
 
 

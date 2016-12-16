@@ -8,14 +8,15 @@
 /**
  * Observer interface, notifies the subject about an update that is made.
  */
-class ISubject;
+class Taxi;
+
 class IObserver{
 
 public:
     /*
      * Sends update to the subject
      */
-    virtual void update(ISubject *iSubject) = 0;
+    virtual void update(Taxi *taxi) = 0;
 };
 
 #endif //EX2_IOBSERVER_H

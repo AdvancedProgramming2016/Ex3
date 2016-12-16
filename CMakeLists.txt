@@ -12,6 +12,8 @@ set(SOURCE_FILES main.cpp src/VehicleFactory.cpp src/VehicleFactory.h src/Point.
         src/StandardVehicle.cpp src/StandardVehicle.h src/IObserver.h src/ISubject.h src/MainFlow.cpp
         src/MainFlow.h src/Manufacturer.h src/MaritalStatus.h src/Passenger.cpp src/Passenger.h
         src/Taxi.cpp src/Taxi.h src/TaxiCenter.cpp src/TaxiCenter.h src/Trip.cpp src/Trip.h src/Menu.cpp src/Menu.h
-        src/BaseParser.h src/StringParser.cpp src/StringParser.h)
+        src/BaseParser.h src/StringParser.cpp src/StringParser.h test/VehicleTest.cpp test/BfsTest.cpp test/DriverTest.cpp
+        test/GridTest.cpp test/MainFlowTest.cpp test/PassengerTest.cpp test/PointTest.cpp test/GridTest.cpp
+        test/TaxiCenterTest.cpp test/TaxiTest.cpp test/TripTest.cpp test/VertexTest.cpp)
 add_executable(Ex3 ${SOURCE_FILES})
 target_link_libraries(Ex3 gtest gtest_main)

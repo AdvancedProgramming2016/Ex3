@@ -6,6 +6,7 @@
 #include "IObserver.h"
 
 class IObserver;
+
 /**
  * Subject interface, will contain observers and receive updates from them.
  */

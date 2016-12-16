@@ -20,7 +20,7 @@ public:
     /*
      * Default Point constructor
      */
-    Point();
+    Point(); //TODO remove default constructor if not necessary
 
     /*
      * Constructor of a specific 2D point.

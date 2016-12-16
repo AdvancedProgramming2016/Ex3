@@ -61,7 +61,7 @@ int Menu::runMenu() {
 
                 // Start Driving
             case 6:
-                this->getMainFlow().startDriving();
+                this->getMainFlow().startDriving(); //TODO this method should be in taxiCenter like the rest above.
                 break;
 
             case 7:

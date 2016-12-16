@@ -3,7 +3,7 @@
 
 MainFlow::MainFlow() {
 
-    this->taxiCenter = new TaxiCenter(new Point(0,0));
+    this->taxiCenter = new TaxiCenter(new Point(0, 0));
 }
 
 void MainFlow::createMap(unsigned height, unsigned width) {
@@ -42,9 +42,9 @@ Grid *MainFlow::getMap() const {
 
 void MainFlow::startDriving() {
 
-    unsigned int i = 0;
-    std::vector<Taxi *> taxiVec = this->taxiCenter->getTaxis();
-    std::queue<Trip *> tripQueue = this->taxiCenter->getTrips();
+    unsigned int        i         = 0;
+    std::vector<Taxi *> taxiVec   = this->taxiCenter->getTaxis();
+    std::queue<Trip *>  tripQueue = this->taxiCenter->getTrips();
 
     for (i = 0; i < taxiVec.size(); i++) {
 
@@ -54,11 +54,9 @@ void MainFlow::startDriving() {
         // If trip queue is empty and there are not more trips
         if (tripQueue.empty()) {
             break;
-        }
-        else if (currTaxi->getTrip() != 0) {
+        } else if (currTaxi->getTrip() != 0) {
             continue;
-        }
-        else {
+        } else {
 
             // Calculate new coefficient according to vehicle type
             currTrip->setTariff(currTrip->getTariff()
@@ -69,6 +67,7 @@ void MainFlow::startDriving() {
 
             // Set the new taxi's current location to end point
             currTaxi->setCurrentPosition(currTrip->getEndPoint());
+            currTaxi->notifyObservers();
             tripQueue.pop();
 
             //Make the driver available to take another trip.

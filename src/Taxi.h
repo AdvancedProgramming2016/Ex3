@@ -16,7 +16,7 @@ class Driver;
  * The class represents a taxi which is made up of a driver and a vehicle.
  * It can switch both the driver and the vehicle during its existance.
  */
-class Taxi : public IObserver {
+class Taxi : public ISubject {
 
 private:
 
@@ -25,6 +25,7 @@ private:
     Point                  currentPosition;
     Trip                   *trip;
     std::vector<Passenger> passengers;
+    std::vector<IObserver*> observers;
 
     void updateSatisfaction();
 
@@ -85,6 +86,8 @@ public:
      */
     void setTrip(Trip *trip);
 
+    const std::vector<IObserver *> &getObservers() const;
+
     /*
      * Returns the passengers in the taxi
      */
@@ -100,7 +103,13 @@ public:
     /*
      * Send update about the driver.
      */
-    virtual void update(ISubject *subject);
+
+
+    virtual int registerObserver(IObserver *observer);
+
+    virtual int unregisterObserver(IObserver *observer);
+
+    virtual void notifyObservers();
 
 };
 
