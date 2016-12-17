@@ -1,5 +1,6 @@
 
 #include "Passenger.h"
+#include <cstdlib>
 
 Passenger::Passenger(const Point &sourcePoint, const Point &destinationPoint)
         : sourcePoint(sourcePoint),

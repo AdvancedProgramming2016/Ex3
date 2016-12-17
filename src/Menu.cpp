@@ -1,5 +1,6 @@
 
 #include "Menu.h"
+#include <cstdlib>
 #include "Driver.h"
 
 MainFlow *Menu::getMainFlow() {
@@ -8,10 +9,11 @@ MainFlow *Menu::getMainFlow() {
 
 int Menu::initializeGame() {
 
+    Point location(0,0);
     //Create Grid with obstacles.
     this->getMainFlow()->createMap(
             this->stringParser.parseGridInput());
-    this->getMainFlow()->createTaxiCenter(new Point(0, 0));
+    this->getMainFlow()->createTaxiCenter(&location);
 }
 
 int Menu::runMenu() {

@@ -1,6 +1,7 @@
 
 
 #include <cstring>
+#include "cstdlib"
 #include <sstream>
 #include "StringParser.h"
 
@@ -22,11 +23,11 @@ Driver *StringParser::parseDriverInput() {
 
     this->splitByComma(inputArr, numOfParams, userInput);
 
-    return new Driver(stoi(inputArr[id]),
-                      stoi(inputArr[age]),
+    return new Driver(atoi(inputArr[id].c_str()),
+                      atoi(inputArr[age].c_str()),
                       inputArr[status][0],
-                      stoi(inputArr[experience]),
-                      stoi(inputArr[vehicleId]));
+                      atoi(inputArr[experience].c_str()),
+                      atoi(inputArr[vehicleId].c_str()));
 
 }
 
@@ -52,7 +53,7 @@ Grid *StringParser::parseGridInput() {
 
         std::cin >> userInput;
         this->splitByComma(inputArr, numOfParams, userInput);
-        obstacles.push_back(Point(stoi(inputArr[x]), stoi(inputArr[y])));
+        obstacles.push_back(Point(atoi(inputArr[x].c_str()), atoi(inputArr[y].c_str())));
     }
 
     return new Grid(height, width, obstacles);
@@ -76,12 +77,12 @@ Trip *StringParser::parseTripInput() {
 
     this->splitByComma(inputArr, numOfParams, userInput);
 
-    Point sPoint(stoi(inputArr[startX]), stoi(inputArr[startY]));
-    Point ePoint(stoi(inputArr[endX]), stoi(inputArr[endY]));
+    Point sPoint(atoi(inputArr[startX].c_str()), atoi(inputArr[startY].c_str()));
+    Point ePoint(atoi(inputArr[endX].c_str()), atoi(inputArr[endY].c_str()));
 
-    return new Trip(stoi(inputArr[id]), sPoint, ePoint,
-                    stoi(inputArr[numOfPassengers]),
-                    std::stod(inputArr[tariff]));
+    return new Trip(atoi(inputArr[id].c_str()), sPoint, ePoint,
+                    atoi(inputArr[numOfPassengers].c_str()),
+                    atof(inputArr[tariff].c_str()));
 
 }
 
@@ -100,8 +101,8 @@ Vehicle *StringParser::parseVehicleInput() {
     // Splits the user input by commas and returns array of inputs
     this->splitByComma(inputArr, numOfInputs, userInput);
 
-    return this->vehicleFactory.makeVehicle(stoi(inputArr[id]),
-                                            stoi(inputArr[taxiType]),
+    return this->vehicleFactory.makeVehicle(atoi(inputArr[id].c_str()),
+                                            atoi(inputArr[taxiType].c_str()),
                                             inputArr[manufacturer][0],
                                             inputArr[color][0]);
 }

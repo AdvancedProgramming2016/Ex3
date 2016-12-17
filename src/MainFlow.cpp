@@ -1,5 +1,6 @@
 
 #include "MainFlow.h"
+#include <cstdlib>
 
 void MainFlow::createMap(Grid *grid) {
     this->map = grid;
