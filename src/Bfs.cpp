@@ -13,7 +13,7 @@ void Bfs::get_route() {
 
     std::queue<Vertex *> queue;
     std::vector<Vertex>  path;
-    path.reserve(m_graph->get_edges().size());
+    path.reserve(this->m_graph->get_edges().size());
     Vertex *v;
 
     shortest_path.reserve(path.size());

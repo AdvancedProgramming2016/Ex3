@@ -28,6 +28,9 @@ public:
      */
     MainFlow(); //TODO maybe make as a singleton
 
+    /*
+     * Connects all the vacant drivers and trip to taxis and drives.
+     */
     void startDriving();
 
     /*

@@ -22,6 +22,7 @@ private:
     char     maritalStatus;
 
 public:
+
     /*
     * Constructor.
     */

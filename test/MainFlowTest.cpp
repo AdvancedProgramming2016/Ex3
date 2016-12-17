@@ -6,13 +6,13 @@ class MainFlowTest : public ::testing::Test {
 protected:
 
     MainFlow mainFlow;
-    Driver   *driver;
-    Vehicle  *vehicle;
+    Driver *driver;
+    Vehicle *vehicle;
 
     virtual void SetUp() {
         mainFlow.createMap(5, 5);
         mainFlow.createTaxiCenter(new Point(0, 0));
-        driver  = new Driver(0, 50, 'M', 27, 1);
+        driver = new Driver(0, 50, 'M', 27, 1);
         vehicle = new StandardVehicle(1, 'F', 'W');
     }
 
@@ -29,6 +29,7 @@ public:
 /*
  * Check that the main flow methods work correctly.
  */
+
 TEST_F(MainFlowTest, basicTest) {
 
     int  preDriversNum  = 0;
@@ -75,6 +76,32 @@ TEST_F(MainFlowTest, basicTest) {
     postVehicleNum = (int) mainFlow.getTaxiCenter()->getVehicles().size();
 
     //ASSERT_EQ(preVehicleNum + 1, postVehicleNum); // check that a new vehicle was created
+}
+
+/*
+ * Verifies the validity of the start drive function
+ */
+TEST_F(MainFlowTest, startDriveBasicTest) {
+
+    Point startPt(2, 2);
+    Point endPt(0, 1);
+
+    Trip *trip1 = new Trip(78, startPt, endPt, 2, 3);
+
+    // Create taxi and trip and start driving
+    this->mainFlow.createVehicle(vehicle);
+    this->mainFlow.createDriver(driver);
+    this->mainFlow.createTrip(trip1);
+    this->mainFlow.startDriving();
+
+    // Checks that the end point of the taxi was changed to the end of the trip
+    EXPECT_TRUE(
+            this->mainFlow.getTaxiCenter()->getTaxis()[0]->getCurrentPosition()
+            == endPt);
+
+    // I get segmentation fault here for some reason
+    //delete trip1;
+
 }
 
 

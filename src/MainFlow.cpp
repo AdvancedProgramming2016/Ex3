@@ -54,9 +54,13 @@ void MainFlow::startDriving() {
         // If trip queue is empty and there are not more trips
         if (tripQueue.empty()) {
             break;
-        } else if (currTaxi->getTrip() != 0) {
+        }
+
+        // If current taxi already has a trip
+        else if (currTaxi->getTrip() != 0) {
             continue;
-        } else {
+        }
+        else {
 
             // Calculate new coefficient according to vehicle type
             currTrip->setTariff(currTrip->getTariff()
@@ -72,14 +76,12 @@ void MainFlow::startDriving() {
             delete currTrip;
             tripQueue.pop();
 
-
             //Make the driver available to take another trip.
             currTaxi->setTrip(0);
 
         }
     }
 }
-
 
 void MainFlow::exitSystem() {
 
