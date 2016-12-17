@@ -51,8 +51,7 @@ TEST_F(TaxiCenterTest, basicTest) {
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_TRUE(output == "(0,0)\n");
 
-    // TODO I get sigabrt when I try deleting
-    //delete d1;
-    //delete v1;
+    delete d1;
+    delete v1;
 
 }

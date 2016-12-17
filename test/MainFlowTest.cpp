@@ -5,17 +5,17 @@ class MainFlowTest : public ::testing::Test {
 
 protected:
 
-    MainFlow           mainFlow;
-    Driver             *driver;
-    Vehicle            *vehicle;
+    MainFlow mainFlow;
+    Driver *driver;
+    Vehicle *vehicle;
     std::vector<Point> obstacles;
-    Grid               *grid;
+    Grid *grid;
 
     virtual void SetUp() {
         grid = new Grid(5, 5, obstacles);
         mainFlow.createMap(grid);
         mainFlow.createTaxiCenter(new Point(0, 0));
-        driver  = new Driver(0, 50, 'M', 27, 1);
+        driver = new Driver(0, 50, 'M', 27, 1);
         vehicle = new StandardVehicle(1, 'F', 'W');
     }
 
@@ -35,15 +35,16 @@ public:
  */
 TEST_F(MainFlowTest, basicTest) {
 
-    int  preDriversNum  = 0;
-    int  postDriverNum  = 0;
-    int  preVehicleNum  = 0;
-    int  postVehicleNum = 0;
-    bool foundDriver    = false;
-    bool foundVehicle   = false;
+    int preDriversNum = 0;
+    int postDriverNum = 0;
+    int preVehicleNum = 0;
+    int postVehicleNum = 0;
+    bool foundDriver = false;
+    bool foundVehicle = false;
 
-    //ASSERT_NE(mainFlow.getMap(), 0);        // make sure a map exists
-    //ASSERT_NE(mainFlow.getTaxiCenter(), 0); // make sure a taxi center exists
+    EXPECT_FALSE(mainFlow.getMap() == 0);        // make sure a map exists
+    EXPECT_FALSE(
+            mainFlow.getTaxiCenter() == 0); // make sure a taxi center exists
 
     preDriversNum = (int) mainFlow.getTaxiCenter()->getDrivers().size();
     mainFlow.createDriver(driver);
@@ -56,11 +57,13 @@ TEST_F(MainFlowTest, basicTest) {
         }
     }
 
-    // ASSERT_TRUE(foundDriver); // make sure that the correct driver was added to the list.
+    EXPECT_TRUE(
+            foundDriver); // make sure that the correct driver was added to the list.
 
     postDriverNum = (int) mainFlow.getTaxiCenter()->getDrivers().size();
 
-    //ASSERT_EQ(preDriversNum + 1, postDriverNum); // check that a new driver was created
+    EXPECT_TRUE(preDriversNum + 1 ==
+                postDriverNum); // check that a new driver was created
 
     preVehicleNum = (int) mainFlow.getTaxiCenter()->getVehicles().size();
     mainFlow.createVehicle(vehicle);
@@ -74,11 +77,13 @@ TEST_F(MainFlowTest, basicTest) {
         }
     }
 
-    //ASSERT_TRUE(foundVehicle); // check that the correct vehicle was added to the list.
+    EXPECT_TRUE(
+            foundVehicle); // check that the correct vehicle was added to the list.
 
     postVehicleNum = (int) mainFlow.getTaxiCenter()->getVehicles().size();
 
-    //ASSERT_EQ(preVehicleNum + 1, postVehicleNum); // check that a new vehicle was created
+    EXPECT_TRUE(preVehicleNum + 1 ==
+                postVehicleNum); // check that a new vehicle was created
 }
 
 /*
@@ -101,9 +106,6 @@ TEST_F(MainFlowTest, startDriveBasicTest) {
     EXPECT_TRUE(
             this->mainFlow.getTaxiCenter()->getTaxis()[0]->getCurrentPosition()
             == endPt);
-
-    // TODO I get segmentation fault here for some reason
-    //delete trip1;
 
 }
 

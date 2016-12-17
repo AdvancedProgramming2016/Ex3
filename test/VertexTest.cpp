@@ -30,4 +30,5 @@ TEST_F(VertexTest, basicTest) {
     EXPECT_TRUE(vtx2->getNum_of_relations() == 2);
 
     delete graph;
+    
 }

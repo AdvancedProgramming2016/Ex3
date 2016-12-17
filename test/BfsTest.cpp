@@ -16,9 +16,7 @@ TEST(BfsTest, basicTests){
     // Builds the shortest path
     bfs.get_route();
 
-    testing::internal::CaptureStdout();
-    std::cout << "(0,0)\n(0,1)\n(1,1)";
-    std::string validOutput = testing::internal::GetCapturedStdout();
+    std::string validOutput = "(0,0)\n(0,1)\n(1,1)";
 
     testing::internal::CaptureStdout();
     bfs.print_points();
