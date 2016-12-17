@@ -44,7 +44,7 @@ void MainFlow::startDriving() {
 
     unsigned int        i         = 0;
     std::vector<Taxi *> taxiVec   = this->taxiCenter->getTaxis();
-    std::queue<Trip *>  tripQueue = this->taxiCenter->getTrips();
+    std::queue<Trip *>  &tripQueue = this->taxiCenter->getTrips();
 
     for (i = 0; i < taxiVec.size(); i++) {
 
@@ -68,7 +68,10 @@ void MainFlow::startDriving() {
             // Set the new taxi's current location to end point
             currTaxi->setCurrentPosition(currTrip->getEndPoint());
             currTaxi->notifyObservers();
+
+            delete currTrip;
             tripQueue.pop();
+
 
             //Make the driver available to take another trip.
             currTaxi->setTrip(0);
@@ -81,7 +84,7 @@ void MainFlow::startDriving() {
 void MainFlow::exitSystem() {
 
     delete taxiCenter;
-    delete map;
+    //delete map; //TODO do we need to delete this?
 
     //exit the system
     exit(0);

@@ -22,11 +22,12 @@ int StringParser::checkUserInput(char *stringToCheck) {
 Driver *StringParser::parseDriverInput() {
 
     int numOfParams = 5;
-    int id = 0;
-    int age = 1;
-    int experience = 2;
-    int vehicleId = 3;
-    int status = 4;
+    int id          = 0;
+    int age         = 1;
+    int status      = 2;
+    int experience  = 3;
+    int vehicleId   = 4;
+
     std::string inputArr[numOfParams];
     std::string userInput;
 
@@ -34,32 +35,37 @@ Driver *StringParser::parseDriverInput() {
 
     this->splitByComma(inputArr, numOfParams, userInput);
 
-    return new Driver(stoi(inputArr[id]), stoi(inputArr[age]),
-                      inputArr[status][0], stoi(inputArr[experience]),
+    return new Driver(stoi(inputArr[id]),
+                      stoi(inputArr[age]),
+                      inputArr[status][0],
+                      stoi(inputArr[experience]),
                       stoi(inputArr[vehicleId]));
 
 }
 
 Graph *StringParser::parseGridInput() {
 
-    int width = 0;
-    int height = 0;
+    int width          = 0;
+    int height         = 0;
     int numOfObstacles = 0;
-    int x = 0;
-    int y = 0;
+    int numOfParams    = 2;
+    int x              = 0;
+    int y              = 1;
 
     // Receive input from the user
     std::cin >> width;
     std::cin >> height;
     std::cin >> numOfObstacles;
-    //std::cin >> obstacles;
 
     std::vector<Point> obstacles;
+    std::string        inputArr[numOfParams];
+    std::string        userInput;
 
     for (int i = 0; i < numOfObstacles; ++i) {
-        std::cin >> x;
-        std::cin >> y;
-        obstacles.push_back(Point(x, y));
+
+        std::cin >> userInput;
+        this->splitByComma(inputArr, numOfParams, userInput);
+        obstacles.push_back(Point(stoi(inputArr[x]), stoi(inputArr[y])));
     }
 
     //TODO: Need to do something with obstacles
@@ -72,14 +78,14 @@ Graph *StringParser::parseGridInput() {
 
 Trip *StringParser::parseTripInput() {
 
-    int numOfParams = 7;
-    int id = 0;
-    int startX = 1;
-    int startY = 2;
-    int endX = 3;
-    int endY = 4;
-    int numOfPassengers = 5;
-    int tariff = 6;
+    int         numOfParams     = 7;
+    int         id              = 0;
+    int         startX          = 1;
+    int         startY          = 2;
+    int         endX            = 3;
+    int         endY            = 4;
+    int         numOfPassengers = 5;
+    int         tariff          = 6;
     std::string userInput;
     std::string inputArr[numOfParams];
 
@@ -98,11 +104,11 @@ Trip *StringParser::parseTripInput() {
 
 Vehicle *StringParser::parseVehicleInput() {
 
-    int numOfinputs = 4;
-    int id = 0;
-    int taxiType = 1;
-    int manufacturer = 2;
-    int color = 3;
+    int         numOfinputs  = 4;
+    int         id           = 0;
+    int         taxiType     = 1;
+    int         manufacturer = 2;
+    int         color        = 3;
     std::string inputArr[numOfinputs];
     std::string userInput;
 

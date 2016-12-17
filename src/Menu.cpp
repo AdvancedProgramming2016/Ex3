@@ -37,31 +37,31 @@ int Menu::runMenu() {
 
             // Create driver
             case 1:
-                this->getMainFlow().getTaxiCenter()->addDriver(
+                this->getMainFlow().createDriver(
                         this->stringParser.parseDriverInput());
                 break;
 
                 // Create trip
             case 2:
-                this->getMainFlow().getTaxiCenter()->addTrip(
+                this->getMainFlow().createTrip(
                         this->stringParser.parseTripInput());
                 break;
 
                 // Create vehicle
             case 3:
-                this->getMainFlow().getTaxiCenter()->addVehicle(
+                this->getMainFlow().createVehicle(
                         this->stringParser.parseVehicleInput());
                 break;
 
                 // Request for driver location
             case 4:
-                this->getMainFlow().getTaxiCenter()->requestDriverLocation(
+                this->getMainFlow().getTaxiCenter()->requestDriverLocation(//TODO this method should be in mainFlow like the rest above.
                         this->stringParser.parseDriverLocation());
                 break;
 
                 // Start Driving
             case 6:
-                this->getMainFlow().startDriving(); //TODO this method should be in taxiCenter like the rest above.
+                this->getMainFlow().startDriving();
                 break;
 
             case 7:

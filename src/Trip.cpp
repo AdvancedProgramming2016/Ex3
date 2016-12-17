@@ -1,7 +1,7 @@
 
 #include "Trip.h"
 
-Trip::Trip(unsigned int rideId, Point &tartPoint,
+Trip::Trip(unsigned int rideId, Point &startPoint,
            Point &endPoint, unsigned int numOfPassengers,
            double tariff) : rideId(rideId), numOfPassengers(numOfPassengers), tariff(tariff),
                                   startPoint(startPoint),

@@ -105,7 +105,7 @@ void TaxiCenter::requestDriverLocation(int driverId) {
 
         if (taxis[i]->getDriver()->getDriverId() == driverId) {
 
-            std::cout << taxis[i]->getCurrentPosition();
+            std::cout << taxis[i]->getCurrentPosition() << std::endl;
         }
     }
 }
@@ -114,8 +114,9 @@ void TaxiCenter::update(Taxi *taxi) {
 
     for (int i = 0; i < taxis.size(); ++i) {
 
-        if(taxis[i]->getDriver()->getDriverId() == taxi->getDriver()->getDriverId())
-        taxis[i] = taxi;
+        if (taxis[i]->getDriver()->getDriverId() ==
+            taxi->getDriver()->getDriverId())
+            taxis[i] = taxi;
     }
 }
 
