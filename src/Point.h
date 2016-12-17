@@ -28,6 +28,11 @@ public:
     friend bool operator==(Point p1, Point p2);
 
     /*
+     * Overloads the "!=" operator in order to evaluate two Points.
+     */
+    friend bool operator!=(Point p1, Point p2);
+
+    /*
      * Overloads the ostream operator in order to print a Point directly.
      */
     friend std::ostream &operator<<(std::ostream &os, const Point &point);
