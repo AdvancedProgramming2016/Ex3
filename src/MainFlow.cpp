@@ -52,7 +52,7 @@ void MainFlow::startDriving() {
         }
 
             // If current taxi already has a trip
-        else if (currTaxi->getTrip() != 0) {
+        else if (currTaxi->getTrip() != 0 || currTaxi->getCurrentPosition() != currTrip->getStartPoint()) {
             continue;
         } else {
 

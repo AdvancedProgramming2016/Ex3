@@ -11,4 +11,8 @@ bool operator==(Point p1, Point p2) {
     return ((p1.m_x == p2.m_x) && (p1.m_y == p2.m_y));
 }
 
+bool operator!=(Point p1, Point p2) {
+    return !(p1 == p2);
+}
+
 
