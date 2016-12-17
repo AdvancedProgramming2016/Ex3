@@ -91,7 +91,7 @@ TEST_F(MainFlowTest, basicTest) {
  */
 TEST_F(MainFlowTest, startDriveBasicTest) {
 
-    Point startPt(2, 2);
+    Point startPt(0, 0);
     Point endPt(0, 1);
 
     Trip *trip1 = new Trip(78, startPt, endPt, 2, 3);
