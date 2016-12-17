@@ -4,6 +4,7 @@
 
 #include "BaseParser.h"
 #include "VehicleFactory.h"
+#include <string>
 
 class Graph;
 
