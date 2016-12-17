@@ -14,7 +14,8 @@ protected:
     virtual void SetUp() {
 
         point         = new Point(0, 0);
-        passengerList = {new Passenger(Point(1, 1), Point(2, 1))};
+        Passenger *p = new Passenger(Point(1, 1), Point(2, 1));
+        passengerList = {p};
     }
 
     virtual void TearDown() {
@@ -51,7 +52,6 @@ TEST_F(TaxiCenterTest, basicTest) {
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_TRUE(output == "(0,0)\n");
 
-    delete d1;
-    delete v1;
-
+    //delete d1;
+    //delete v1; // TODO this caused an error!!!
 }

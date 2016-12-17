@@ -2,10 +2,8 @@
 #include "Grid.h"
 
 Grid::Grid(unsigned int length, unsigned int width,
-           std::vector<Point> &obstacles) {
-    this->m_length  = length;
-    this->m_width   = width;
-    this->obstacles = obstacles;
+           std::vector<Point> &obstacles) : m_length(length), m_width(width),
+                                            obstacles(obstacles) {
 
     this->m_edges.reserve(length * width);
 

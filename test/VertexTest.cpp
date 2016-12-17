@@ -1,21 +1,17 @@
 
 #include <gtest/gtest.h>
-#include <iostream>
-#include "../src/Vertex.h"
-#include "../src/Graph.h"
+#include <vector>
 #include "../src/Grid.h"
 
-class VertexTest: public :: testing::Test {
 
-};
+TEST(VertexTest, basicVertexTest) {
 
-TEST_F(VertexTest, basicTest) {
-
+    // Init params
     std::vector<Point> obstacles;
-    Graph *graph = new Grid(5, 6, obstacles);
+    Graph *graph = new Grid(6, 5, obstacles);
 
     Vertex *vtx1 = graph->get_vertex(Point(2,3));
-    Vertex *vtx2 = graph->get_vertex(Point(4,5));
+    Vertex *vtx2 = graph->get_vertex(Point(0,0));
 
     // Check point getter
     EXPECT_TRUE(vtx1->getM_point() == Point(2,3));
@@ -30,5 +26,5 @@ TEST_F(VertexTest, basicTest) {
     EXPECT_TRUE(vtx2->getNum_of_relations() == 2);
 
     delete graph;
-    
+
 }
