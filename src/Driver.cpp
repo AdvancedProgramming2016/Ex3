@@ -1,7 +1,6 @@
 
 #include "Driver.h"
 
-
 Driver::Driver(unsigned int driverId, unsigned int age,
                char maritalStatus, unsigned int yearsOfExperience,
                unsigned int vehicleId)

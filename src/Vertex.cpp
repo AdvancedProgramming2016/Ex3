@@ -1,9 +1,8 @@
 
 #include "Vertex.h"
 
-Vertex::Vertex(Point &point, std::vector<Vertex *> relations) : m_point(point), m_num_of_relations(0),
-                                                                m_relationships(relations),
-                                                                m_is_visited(false), m_father(0) {
+Vertex::Vertex(Point point) : m_point(point), m_num_of_relations(0),
+                              m_father(0) {
 
 }
 
@@ -11,10 +10,6 @@ void Vertex::add_relation(Vertex &vertex) {
 
     m_relationships.push_back(&vertex);
     m_num_of_relations++;
-}
-
-Vertex::Vertex(Point point) : m_point(point), m_num_of_relations(0), m_father(0) {
-
 }
 
 const Point &Vertex::getM_point() const {

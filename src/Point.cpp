@@ -1,8 +1,6 @@
 
 #include "Point.h"
 
-Point::Point() {}
-
 Point::Point(int x, int y) : m_x(x), m_y(y) {}
 
 std::ostream &operator<<(std::ostream &os, const Point &point) {

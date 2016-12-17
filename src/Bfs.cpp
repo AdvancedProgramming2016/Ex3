@@ -3,11 +3,13 @@
 #include <algorithm>
 #include "Bfs.h"
 
-Bfs::Bfs(Graph *graph, Point source, Point dest) {
-    this->m_graph = graph;
+Bfs::Bfs(Graph *graph, Point source, Point dest) : m_source(source),
+                                                   m_dest(dest) {
+    this->m_graph  = graph;
     this->m_source = source;
-    this->m_dest = dest;
+    this->m_dest   = dest;
 }
+
 
 void Bfs::get_route() {
 
@@ -70,7 +72,7 @@ std::vector<Point> Bfs::search_fathers(std::vector<Vertex> vector) {
 
 void Bfs::print_points() {
 
-    for (int i = shortest_path.size() - 1; i >= 0; --i) {
+    for (unsigned i = shortest_path.size() - 1; i >= 0; --i) {
 
         std::cout << shortest_path.at(i) << std::endl;
     }

@@ -2,10 +2,6 @@
 #include "Menu.h"
 #include "Driver.h"
 
-Menu::Menu() {
-
-}
-
 MainFlow *Menu::getMainFlow() {
     return this->mainFlow;
 }
@@ -15,17 +11,8 @@ int Menu::initializeGame() {
     //Create Grid with obstacles.
     this->getMainFlow()->createMap(
             this->stringParser.parseGridInput());
-    this->getMainFlow()->createTaxiCenter(new Point(0,0));
+    this->getMainFlow()->createTaxiCenter(new Point(0, 0));
 }
-
-int checkUserInput(int userSelection) {
-
-    if (userSelection > 7) {
-        return 1;
-    }
-    return 0;
-}
-
 
 int Menu::runMenu() {
 
@@ -57,7 +44,7 @@ int Menu::runMenu() {
 
                 // Request for driver location
             case 4:
-                this->getMainFlow()->getTaxiCenter()->requestDriverLocation(//TODO this method should be in mainFlow like the rest above.
+                this->getMainFlow()->getTaxiCenter()->requestDriverLocation(
                         this->stringParser.parseDriverLocation());
                 break;
 
@@ -66,6 +53,7 @@ int Menu::runMenu() {
                 this->getMainFlow()->startDriving();
                 break;
 
+                //Exit system
             case 7:
                 this->getMainFlow()->exitSystem();
 

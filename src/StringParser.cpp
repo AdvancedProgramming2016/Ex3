@@ -6,19 +6,6 @@
 
 #include "MainFlow.h"
 
-
-StringParser::StringParser() {
-
-}
-
-void StringParser::checkGridInput(int height, int width) { //TODO delete this and the next one below if not used.
-
-}
-
-int StringParser::checkUserInput(char *stringToCheck) {
-
-}
-
 Driver *StringParser::parseDriverInput() {
 
     int numOfParams = 5;
@@ -45,12 +32,12 @@ Driver *StringParser::parseDriverInput() {
 
 Grid *StringParser::parseGridInput() {
 
-    int width          = 0;
-    int height         = 0;
-    int numOfObstacles = 0;
-    int numOfParams    = 2;
-    int x              = 0;
-    int y              = 1;
+    unsigned width          = 0;
+    unsigned height         = 0;
+    int      numOfObstacles = 0;
+    int      numOfParams    = 2;
+    int      x              = 0;
+    int      y              = 1;
 
     // Receive input from the user
     std::cin >> width;
@@ -68,10 +55,6 @@ Grid *StringParser::parseGridInput() {
         obstacles.push_back(Point(stoi(inputArr[x]), stoi(inputArr[y])));
     }
 
-    //TODO: Need to do something with obstacles
-
-    // Create instance of graph
-    //Grid *graph =
     return new Grid(height, width, obstacles);
 
 }
@@ -104,18 +87,18 @@ Trip *StringParser::parseTripInput() {
 
 Vehicle *StringParser::parseVehicleInput() {
 
-    int         numOfinputs  = 4;
+    int         numOfInputs  = 4;
     int         id           = 0;
     int         taxiType     = 1;
     int         manufacturer = 2;
     int         color        = 3;
-    std::string inputArr[numOfinputs];
+    std::string inputArr[numOfInputs];
     std::string userInput;
 
     std::cin >> userInput;
 
     // Splits the user input by commas and returns array of inputs
-    this->splitByComma(inputArr, numOfinputs, userInput);
+    this->splitByComma(inputArr, numOfInputs, userInput);
 
     return this->vehicleFactory.makeVehicle(stoi(inputArr[id]),
                                             stoi(inputArr[taxiType]),
@@ -130,18 +113,6 @@ unsigned int StringParser::parseDriverLocation() {
     std::cin >> driverId;
 
     return driverId;
-}
-
-int StringParser::addNewDriver(TaxiCenter &taxiCenter, Driver *driver) {
-    taxiCenter.getDrivers().push_back(driver);
-}
-
-int StringParser::addNewVehicle(TaxiCenter &taxiCenter, Vehicle *vehicle) {
-    taxiCenter.getVehicles().push_back(vehicle);
-}
-
-int StringParser::addNewTrip(TaxiCenter &taxiCenter, Trip *trip) {
-    taxiCenter.getTrips().push(trip);
 }
 
 void StringParser::splitByComma(std::string *inputArr, int size,

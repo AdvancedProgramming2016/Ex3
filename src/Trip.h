@@ -23,7 +23,7 @@ private:
 
 public:
 
-    //TODO what about the taxi int the initialization of trip?
+
     /*
      * Constructor.
      */
@@ -45,11 +45,6 @@ public:
      * Returns the number of passengers taking the trip.
      */
     unsigned int getNumOfPassengers() const;
-
-    /*
-    * Destructor.
-    */
-    virtual ~Trip();
 
     /*
      * Returns the trip coefficient

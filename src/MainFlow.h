@@ -16,17 +16,10 @@ class MainFlow {
 
 private:
 
-    BaseParser     *parser;
     TaxiCenter     *taxiCenter;
     Grid           *map;
-    VehicleFactory vehicleFactory;
 
 public:
-
-    /*
-     * Constructor.
-     */
-    MainFlow(); //TODO maybe make as a singleton
 
     /*
      * Connects all the vacant drivers and trip to taxis and drives.

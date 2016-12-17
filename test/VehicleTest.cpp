@@ -52,8 +52,10 @@ TEST_F(VehicleTest, vehicleComparison) {
     regularCoefficient = standardVehicle->getCoefficient();
     luxuryCoefficient  = luxuryVehicle->getCoefficient();
 
+    //Checks that the coefficient of the standard vehicle,
+    // is lower than the luxury kind.
     ASSERT_LT(regularCoefficient,
-              luxuryCoefficient); //TODO wrong test, check how to use the trip coefficient
+              luxuryCoefficient);
 }
 
 

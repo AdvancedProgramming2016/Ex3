@@ -1,8 +1,0 @@
-
-
-#ifndef EX2_MARITALSTATUS_H
-#define EX2_MARITALSTATUS_H
-
-
-
-#endif //EX2_MARITALSTATUS_H

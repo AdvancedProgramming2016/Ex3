@@ -1,11 +1,6 @@
 
 #include "Taxi.h"
 
-Taxi::Taxi(Driver *driver, Vehicle *vehicle, const Point &currentPosition,
-           Trip *trip) : driver(
-        driver), vehicle(vehicle), currentPosition(currentPosition),
-                         trip(trip) {}
-
 Taxi::Taxi(Driver *driver, Vehicle *vehicle, const Point &currentPosition)
         : driver(
         driver), vehicle(vehicle), currentPosition(currentPosition), trip(0) {}

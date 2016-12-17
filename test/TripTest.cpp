@@ -30,7 +30,7 @@ protected:
     }
 };
 
-//TODO add checks.
+//No checks were needed, yet.
 
 
 

@@ -27,11 +27,6 @@ public:
     Vertex(Point point);
 
     /*
-     * Constructor of a vertex with a point and a relationship vector
-     */
-    Vertex(Point &point, std::vector<Vertex *> relations); //TODO remove if not used
-
-    /*
      * The method returns a Point
      */
     const Point &getM_point() const;

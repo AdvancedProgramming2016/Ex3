@@ -1,10 +1,6 @@
 
 #include "Graph.h"
 
-Graph::Graph() {
-
-}
-
 std::vector<Vertex> Graph::get_edges() {
     return m_edges;
 }
