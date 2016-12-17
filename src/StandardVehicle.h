@@ -6,9 +6,10 @@
 #include "Vehicle.h"
 
 /**
- * The class inherits from the Vehicle class, and represents a standard kind of vehicle.
+ * The class inherits from the Vehicle class, and represents a standard kind of
+ * vehicle.
  */
-class StandardVehicle: public Vehicle {
+class StandardVehicle : public Vehicle {
 
 public:
 

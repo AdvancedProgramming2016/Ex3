@@ -3,7 +3,7 @@
 #define EX2_CHECK_BASEPARSER_H
 
 class Driver;
-class Graph;
+class Grid;
 class Trip;
 class Vehicle;
 
@@ -11,18 +11,25 @@ class BaseParser {
 
 public:
 
-    virtual void checkGridInput(int height, int width) = 0;
+    /*
+     * Receives the user input for the grid.
+     */
+    virtual Grid *parseGridInput() = 0;
 
-    virtual Graph *parseGridInput() = 0;
-
-    virtual int checkUserInput(char *stringToCheck) = 0;
-
+    /*
+     * Receives the user input for the driver.
+     */
     virtual Driver *parseDriverInput() = 0;
 
+    /*
+     * Receives the user input for the trip.
+     */
     virtual Trip *parseTripInput() = 0;
 
+    /*
+     * Receives the user input for the
+     */
     virtual Vehicle *parseVehicleInput() = 0;
-
 };
 
 #endif //EX2_CHECK_BASEPARSER_H

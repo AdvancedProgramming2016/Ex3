@@ -27,7 +27,7 @@ TEST(DriverTest, observerTest) {
 
     Driver     *driver     = new Driver(0, 30, 'M', 7, 0);
     Vehicle    *vehicle    = new StandardVehicle(0, 'H', 'G');
-    Taxi       *taxi       = new Taxi(driver, vehicle, Point(0, 0), 0);
+    Taxi       *taxi       = new Taxi(driver, vehicle, Point(0, 0));
     TaxiCenter *taxiCenter = new TaxiCenter(new Point(0, 0));
 
 
@@ -43,8 +43,6 @@ TEST(DriverTest, observerTest) {
               postObserverNum); //check that adding an observer works
 
     taxi->unregisterObserver(taxiCenter);
-
-    //TODO make sure by searching the observers vector that the correct observer was deleted.
 
     postObserverNum = (int) taxi->getObservers().size();
 

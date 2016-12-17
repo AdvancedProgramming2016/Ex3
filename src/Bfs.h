@@ -12,9 +12,9 @@
 class Bfs {
 
 private:
-    Graph *m_graph;
-    Point m_source;
-    Point m_dest;
+    Graph              *m_graph;
+    Point              m_source;
+    Point              m_dest;
     std::vector<Point> shortest_path;
 
     /*

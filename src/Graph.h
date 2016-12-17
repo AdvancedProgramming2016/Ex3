@@ -18,11 +18,6 @@ protected:
 public:
 
     /*
-     * The default constructor
-     */
-    Graph();
-
-    /*
      * The method returns the edges vector
      */
     std::vector<Vertex> get_edges();

@@ -16,17 +16,10 @@ class MainFlow {
 
 private:
 
-    BaseParser     *parser;
     TaxiCenter     *taxiCenter;
     Grid           *map;
-    VehicleFactory vehicleFactory;
 
 public:
-
-    /*
-     * Constructor.
-     */
-    MainFlow(); //TODO maybe make as a singleton
 
     /*
      * Connects all the vacant drivers and trip to taxis and drives.
@@ -36,7 +29,7 @@ public:
     /*
      * Creates a map with obstacles.
      */
-    void createMap(unsigned height, unsigned width);
+    void createMap(Grid * grid);
 
     /*
      * Creates a taxi center.
@@ -53,6 +46,9 @@ public:
      */
     void createVehicle(Vehicle *vehicle);
 
+    /*
+     * Create a new trip.
+     */
     void createTrip(Trip * trip);
 
     /*

@@ -31,10 +31,6 @@ double Vehicle::getCoefficient() const {
     return coefficient;
 }
 
-unsigned int Vehicle::getSpeedLimit() const {
-//    return speedLimit;
-}
-
 void Vehicle::increaseKmPassed() {
     kmPassed++;
 }

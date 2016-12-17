@@ -5,7 +5,6 @@
 /**
  * The class represents an abstract vehicle.
  */
-//TODO decide how to make it an abstract class
 class Vehicle {
 
 private:
@@ -15,8 +14,8 @@ private:
     char     color;
 
 protected:
-    unsigned maxCapacity; //TODO decide how to use those
-    double   coefficient;      // TODO that too
+    unsigned maxCapacity;
+    double   coefficient;
 
 public:
 
@@ -54,11 +53,6 @@ public:
      * Returns the vehicle coefficient
      */
     double getCoefficient() const;
-
-    /*
-     * Returns the vehicle's speed limit.
-     */
-    unsigned int getSpeedLimit() const;
 
     /*
      * Increases the number of kilometers passed by the vehicle by one.

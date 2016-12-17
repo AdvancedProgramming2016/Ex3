@@ -7,7 +7,7 @@
  */
 class Taxi;
 
-class IObserver{
+class IObserver {
 
 public:
     /*

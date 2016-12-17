@@ -33,11 +33,6 @@ private:
 public:
 
     /*
-     * Constructor
-     */
-    Taxi(Driver *driver, Vehicle *vehicle, const Point &currentPosition, Trip *trip);
-
-    /*
      * Constructor.
      */
     Taxi(Driver *driver, Vehicle *vehicle, const Point &currentPosition);
@@ -87,6 +82,9 @@ public:
      */
     void setTrip(Trip *trip);
 
+    /*
+     * Return the observers.
+     */
     const std::vector<IObserver *> &getObservers() const;
 
     /*
@@ -99,17 +97,24 @@ public:
      */
     void setPassengers(const std::vector<Passenger> &passengers);
 
+    /*
+     * End the taxi trip.
+     */
     void endTrip();
 
     /*
-     * Send update about the driver.
+     * Register a new observer on the taxi.
      */
-
-
     virtual int registerObserver(IObserver *observer);
 
+    /*
+     * Unregister the given taxi observer.
+     */
     virtual int unregisterObserver(IObserver *observer);
 
+    /*
+     * Notify all the observers.
+     */
     virtual void notifyObservers();
 
 };

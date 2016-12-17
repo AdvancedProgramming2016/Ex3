@@ -18,6 +18,8 @@ TEST(PointTest, basicTest) {
     testing::internal::CaptureStdout();
     std::cout << p1;
     std::string output = testing::internal::GetCapturedStdout();
+
+    //Check that the outputs are equal.
     EXPECT_TRUE(output == "(1,4)");
 
 }

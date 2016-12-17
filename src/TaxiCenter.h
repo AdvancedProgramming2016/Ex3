@@ -48,8 +48,6 @@ public:
      */
     virtual ~TaxiCenter();
 
-    Trip *answerCall();
-
     /*
     * Creates a new taxi by connecting a driver with a vehicle.
     */
@@ -60,6 +58,9 @@ public:
      */
     void addDriver(Driver *driver);
 
+    /*
+     * Add a trip to the taxi center queue.
+     */
     void addTrip(Trip *trip);
 
     /*
@@ -97,10 +98,10 @@ public:
      */
     void requestDriverLocation(int driverId);
 
+    /*
+     * Update according to the subject.
+     */
     virtual void update(Taxi *taxi);
-
-    // TODO: Do we need this function? it's not used at all
-    void printDriverLocation(const Driver &driver);
 };
 
 

@@ -1,6 +1,0 @@
-
-#ifndef EX2_MANUFACTURER_H
-#define EX2_MANUFACTURER_H
-
-
-#endif //EX2_MANUFACTURER_H

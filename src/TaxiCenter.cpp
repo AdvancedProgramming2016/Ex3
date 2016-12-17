@@ -1,8 +1,8 @@
 
 #include "TaxiCenter.h"
 
-TaxiCenter::TaxiCenter(Point *taxiCenterLocation) : taxiCenterLocation(
-        taxiCenterLocation) {}
+TaxiCenter::TaxiCenter(Point *taxiCenterLocation) :
+        taxiCenterLocation(taxiCenterLocation) {}
 
 TaxiCenter::~TaxiCenter() {
 
@@ -29,7 +29,6 @@ TaxiCenter::~TaxiCenter() {
     }
 
     //delete all the vehicles.
-    //TODO: there is a confusion between int and unsigned
     for (int vehiclesIndex = 0;
          vehiclesIndex < vehicles.size(); ++vehiclesIndex) {
         delete vehicles[vehiclesIndex];
@@ -67,10 +66,6 @@ void TaxiCenter::addVehicle(Vehicle *vehicle) {
     vehicles.push_back(vehicle);
 }
 
-Trip *TaxiCenter::answerCall() {
-    // not implemented yet
-}
-
 void TaxiCenter::createTaxi(Driver *driver) {
 
     for (int i = 0; i < vehicles.size(); ++i) {
@@ -83,10 +78,6 @@ void TaxiCenter::createTaxi(Driver *driver) {
             taxi->registerObserver(this);
         }
     }
-}
-
-void TaxiCenter::printDriverLocation(const Driver &driver) {
-
 }
 
 void TaxiCenter::addTaxi(Taxi *taxi) {

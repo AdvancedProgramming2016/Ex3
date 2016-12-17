@@ -4,21 +4,10 @@
 #include "../src/Grid.h"
 #include "../src/Bfs.h"
 
-class BfsTest : public :: testing::Test {
-
-protected:
-
-    Graph *graph;
-    std::vector<Point> obstacles;
-
-public:
-
-
-};
-
-TEST_F(BfsTest, basicTests){
+TEST(BfsTest, basicTests){
 
     // Init params
+    std::vector<Point> obstacles;
     Graph *graph = new Grid(5, 5, obstacles);
     Point startPt(0, 0);
     Point endPt(1, 1);
@@ -35,6 +24,7 @@ TEST_F(BfsTest, basicTests){
     bfs.print_points();
     std::string output = testing::internal::GetCapturedStdout();
 
+    //Check that the outputs are equal.
     EXPECT_TRUE(strcmp(validOutput.c_str(), output.c_str()));
     delete graph;
 }

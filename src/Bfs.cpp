@@ -3,11 +3,13 @@
 #include <algorithm>
 #include "Bfs.h"
 
-Bfs::Bfs(Graph *graph, Point source, Point dest) {
-    this->m_graph = graph;
+Bfs::Bfs(Graph *graph, Point source, Point dest) : m_source(source),
+                                                   m_dest(dest) {
+    this->m_graph  = graph;
     this->m_source = source;
-    this->m_dest = dest;
+    this->m_dest   = dest;
 }
+
 
 void Bfs::get_route() {
 

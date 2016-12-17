@@ -5,20 +5,24 @@ class MainFlowTest : public ::testing::Test {
 
 protected:
 
-    MainFlow mainFlow;
-    Driver *driver;
-    Vehicle *vehicle;
+    MainFlow           mainFlow;
+    Driver             *driver;
+    Vehicle            *vehicle;
+    std::vector<Point> obstacles;
+    Grid               *grid;
 
     virtual void SetUp() {
-        mainFlow.createMap(5, 5);
+        grid = new Grid(5, 5, obstacles);
+        mainFlow.createMap(grid);
         mainFlow.createTaxiCenter(new Point(0, 0));
-        driver = new Driver(0, 50, 'M', 27, 1);
+        driver  = new Driver(0, 50, 'M', 27, 1);
         vehicle = new StandardVehicle(1, 'F', 'W');
     }
 
     virtual void TearDown() {
         delete driver;
         delete vehicle;
+        delete grid;
     }
 
 public:
@@ -29,7 +33,6 @@ public:
 /*
  * Check that the main flow methods work correctly.
  */
-
 TEST_F(MainFlowTest, basicTest) {
 
     int  preDriversNum  = 0;
@@ -39,8 +42,8 @@ TEST_F(MainFlowTest, basicTest) {
     bool foundDriver    = false;
     bool foundVehicle   = false;
 
-    // ASSERT_NE(mainFlow.getMap(), 0);        // make sure a map exists
-    // ASSERT_NE(mainFlow.getTaxiCenter(), 0); // make sure a taxi center exists
+    //ASSERT_NE(mainFlow.getMap(), 0);        // make sure a map exists
+    //ASSERT_NE(mainFlow.getTaxiCenter(), 0); // make sure a taxi center exists
 
     preDriversNum = (int) mainFlow.getTaxiCenter()->getDrivers().size();
     mainFlow.createDriver(driver);
@@ -99,10 +102,9 @@ TEST_F(MainFlowTest, startDriveBasicTest) {
             this->mainFlow.getTaxiCenter()->getTaxis()[0]->getCurrentPosition()
             == endPt);
 
-    // I get segmentation fault here for some reason
+    // TODO I get segmentation fault here for some reason
     //delete trip1;
 
 }
-
 
 

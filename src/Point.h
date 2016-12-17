@@ -18,11 +18,6 @@ private:
 public:
 
     /*
-     * Default Point constructor
-     */
-    Point(); //TODO remove default constructor if not necessary
-
-    /*
      * Constructor of a specific 2D point.
      */
     Point(int x, int y);

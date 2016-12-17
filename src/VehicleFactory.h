@@ -12,7 +12,7 @@
 class VehicleFactory {
 
 public:
-    Vehicle* makeVehicle(int id, int vehicleType,
+    Vehicle* makeVehicle(unsigned int id, unsigned int vehicleType,
                         char manufacturer, char color);
 };
 

@@ -36,16 +36,6 @@ public:
  */
 TEST_F(TaxiCenterTest, basicTest) {
 
-    unsigned initTaxisSize = 0;
-    unsigned postTaxisSize = 0;
-
-    initTaxisSize = (int) taxiCenter.getTaxis().size();
-    taxiCenter.answerCall();
-    postTaxisSize = (int) taxiCenter.getTaxis().size();
-
-    EXPECT_EQ(initTaxisSize,
-              postTaxisSize); //check that a taxi was added to the taxi center
-
     Vehicle *v1 = new Vehicle(1234, 'F', 'B');
     Driver *d1 = new Driver(2, 50, 'M', 4, 1234);
 
@@ -61,7 +51,7 @@ TEST_F(TaxiCenterTest, basicTest) {
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_TRUE(output == "(0,0)\n");
 
-    // I get sigabrt when I try deleting
+    // TODO I get sigabrt when I try deleting
     //delete d1;
     //delete v1;
 

@@ -12,6 +12,10 @@
 class LuxuryVehicle : public Vehicle {
 
 public:
+
+    /*
+     * Constructor.
+     */
     LuxuryVehicle(unsigned int vehicleId,
                   char carManufacturer, char color);
 };

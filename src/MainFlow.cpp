@@ -1,18 +1,13 @@
 
 #include "MainFlow.h"
 
-MainFlow::MainFlow() {
-
-    this->taxiCenter = new TaxiCenter(new Point(0, 0));
-}
-
-void MainFlow::createMap(unsigned height, unsigned width) {
-
+void MainFlow::createMap(Grid *grid) {
+    this->map = grid;
 }
 
 void MainFlow::createTaxiCenter(Point *location) {
 
-    taxiCenter = new TaxiCenter(location);
+    this->taxiCenter = new TaxiCenter(location);
 }
 
 void MainFlow::createDriver(Driver *driver) {
@@ -29,7 +24,7 @@ void MainFlow::createVehicle(Vehicle *vehicle) {
 void MainFlow::createTrip(Trip *trip) {
 
     // Push new trip to trip queue
-    this->taxiCenter->getTrips().push(trip);
+    this->taxiCenter->addTrip(trip);
 }
 
 TaxiCenter *MainFlow::getTaxiCenter() const {
@@ -42,8 +37,8 @@ Grid *MainFlow::getMap() const {
 
 void MainFlow::startDriving() {
 
-    unsigned int        i         = 0;
-    std::vector<Taxi *> taxiVec   = this->taxiCenter->getTaxis();
+    unsigned int        i          = 0;
+    std::vector<Taxi *> taxiVec    = this->taxiCenter->getTaxis();
     std::queue<Trip *>  &tripQueue = this->taxiCenter->getTrips();
 
     for (i = 0; i < taxiVec.size(); i++) {
@@ -56,11 +51,10 @@ void MainFlow::startDriving() {
             break;
         }
 
-        // If current taxi already has a trip
+            // If current taxi already has a trip
         else if (currTaxi->getTrip() != 0) {
             continue;
-        }
-        else {
+        } else {
 
             // Calculate new coefficient according to vehicle type
             currTrip->setTariff(currTrip->getTariff()
@@ -86,11 +80,12 @@ void MainFlow::startDriving() {
 void MainFlow::exitSystem() {
 
     delete taxiCenter;
-    //delete map; //TODO do we need to delete this?
+    delete map;
 
     //exit the system
     exit(0);
 }
+
 
 
 

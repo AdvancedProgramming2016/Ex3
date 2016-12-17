@@ -13,15 +13,24 @@ class Menu {
 
 private:
     StringParser stringParser;
-    MainFlow mainFlow;
+    MainFlow     *mainFlow;
 
 public:
 
-    Menu();
+    /*
+     * Initialize the grid with user input.
+     */
     int initializeGame();
-    int checkUserInput(int userSelection);
+
+    /*
+     * Run the option menu for the user.
+     */
     int runMenu();
-    MainFlow getMainFlow();
+
+    /*
+     * Return the mainFlow.
+     */
+    MainFlow *getMainFlow();
 
 };
 

@@ -10,19 +10,19 @@ class IObserver;
 /**
  * Subject interface, will contain observers and receive updates from them.
  */
-class ISubject{
+class ISubject {
 
 public:
 
     /*
      * Adds a new observer.
      */
-    virtual int registerObserver(IObserver* observer) = 0;
+    virtual int registerObserver(IObserver *observer) = 0;
 
     /*
      * Removes a given observer.
      */
-    virtual int unregisterObserver(IObserver* observer) = 0;
+    virtual int unregisterObserver(IObserver *observer) = 0;
 
     /*
      * Notifies the observers.
