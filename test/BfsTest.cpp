@@ -13,23 +13,13 @@ protected:
 
 public:
 
-    virtual void SetUp(){
-
-
-            Graph *graph = new Grid(3, 2, obstacles);
-    };
-
-    virtual void TearDown(){
-
-            delete graph;
-
-    };
 
 };
 
 TEST_F(BfsTest, basicTests){
 
     // Init params
+    Graph *graph = new Grid(5, 5, obstacles);
     Point startPt(0, 0);
     Point endPt(1, 1);
     Bfs bfs(graph, startPt, endPt);
@@ -37,10 +27,14 @@ TEST_F(BfsTest, basicTests){
     // Builds the shortest path
     bfs.get_route();
 
-    // TODO: Check if necessary to check
     testing::internal::CaptureStdout();
-    std::cout << "(0, 0)\n (0, 1)\n (1, 1)";
-    std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_TRUE(bfs.print_points() == output.compare());
+    std::cout << "(0,0)\n(0,1)\n(1,1)";
+    std::string validOutput = testing::internal::GetCapturedStdout();
 
+    testing::internal::CaptureStdout();
+    bfs.print_points();
+    std::string output = testing::internal::GetCapturedStdout();
+
+    EXPECT_TRUE(strcmp(validOutput.c_str(), output.c_str()));
+    delete graph;
 }

@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "../src/Driver.h"
+#include "../src/StandardVehicle.h"
+#include "../src/TaxiCenter.h"
 
 /*
  * Checks the basic driver functionality.

@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "../src/Trip.h"
+#include "../src/StandardVehicle.h"
 
 /**
  * The class performs unit tests upon the Trip class.

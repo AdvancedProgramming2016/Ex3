@@ -3,60 +3,32 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include "../src/Vertex.h"
+#include "../src/Graph.h"
+#include "../src/Grid.h"
 
 class VertexTest: public :: testing::Test {
-
-protected:
-
-    Vertex *vtx1;
-    Vertex *vtx2;
-    Vertex *vtx3;
-
-public:
-
-    virtual void SetUp() {
-
-        Vertex *vtx1 = new Vertex(Point(5, 7));
-        Vertex *vtx2 = new Vertex(Point(4, 7));
-        Vertex *vtx3 = new Vertex(Point(6, 7));
-
-    }
-
-    virtual void TearDown() {
-
-        delete vtx1;
-        delete vtx2;
-        delete vtx3;
-
-    }
 
 };
 
 TEST_F(VertexTest, basicTest) {
 
-    // Verify constructor inserts default params
-    EXPECT_TRUE(vtx1->getNum_of_relations() == 0);
-    EXPECT_TRUE(vtx1->getFather() == 0);
+    std::vector<Point> obstacles;
+    Graph *graph = new Grid(5, 6, obstacles);
+
+    Vertex *vtx1 = graph->get_vertex(Point(2,3));
+    Vertex *vtx2 = graph->get_vertex(Point(4,5));
 
     // Check point getter
-    EXPECT_TRUE(vtx1->getM_point() == Point(5,7));
+    EXPECT_TRUE(vtx1->getM_point() == Point(2,3));
 
-    // Check add_relation and getNum_of_relations function
-
-    vtx1->add_relation(*vtx2);
-    EXPECT_TRUE(vtx1->getNum_of_relations() == 1);
-    EXPECT_FALSE(vtx1->getNum_of_relations() == 2);
-
-    // Check getM_relations_list returns vector in the anticipated size
-    std::vector<Vertex *> vertex1;
-    vertex1 = vtx1->getM_relations_list();
-    EXPECT_TRUE(vertex1.size() == 2);
+    // Check get Num relations
+    EXPECT_TRUE(vtx1->getNum_of_relations() == 4);
 
     // Checks that the node wasn't visited yet
     EXPECT_FALSE(vtx1->isM_is_visited());
 
-    // Checks that set_visited function sets m_is_visited to true
-    vtx1->set_visited();
-    EXPECT_TRUE(vtx1->isM_is_visited());
+    // Expect only 2 relations
+    EXPECT_TRUE(vtx2->getNum_of_relations() == 2);
 
+    delete graph;
 }
