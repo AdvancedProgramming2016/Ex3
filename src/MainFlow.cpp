@@ -37,9 +37,9 @@ Grid *MainFlow::getMap() const {
 
 void MainFlow::startDriving() {
 
-    unsigned int        i          = 0;
-    std::vector<Taxi *> taxiVec    = this->taxiCenter->getTaxis();
-    std::queue<Trip *>  &tripQueue = this->taxiCenter->getTrips();
+    unsigned int i = 0;
+    std::vector<Taxi *> taxiVec = this->taxiCenter->getTaxis();
+    std::queue<Trip *> &tripQueue = this->taxiCenter->getTrips();
 
     for (i = 0; i < taxiVec.size(); i++) {
 
@@ -52,7 +52,8 @@ void MainFlow::startDriving() {
         }
 
             // If current taxi already has a trip
-        else if (currTaxi->getTrip() != 0 || currTaxi->getCurrentPosition() != currTrip->getStartPoint()) {
+        else if (currTaxi->getTrip() != 0 ||
+                 currTaxi->getCurrentPosition() == currTrip->getStartPoint()) {
             continue;
         } else {
 
