@@ -72,6 +72,7 @@ void Taxi::updateSatisfaction() {
 
 void Taxi::endTrip() {
 
+    this->updateSatisfaction();
     delete trip;
     trip = 0;
 }

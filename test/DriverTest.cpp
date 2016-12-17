@@ -51,5 +51,3 @@ TEST(DriverTest, observerTest) {
     ASSERT_EQ(initObserverNum,
               postObserverNum); //check that removing an observer works
 }
-
-
