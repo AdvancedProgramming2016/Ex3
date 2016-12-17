@@ -1,10 +1,12 @@
 
 #include "Grid.h"
 
-Grid::Grid(int length, int width, std::vector<Point> obstacles) : m_length(
-        length), m_width(width), obstacles(obstacles) {
+Grid::Grid(unsigned int length, unsigned int width, std::vector<Point> &obstacles) {
+    this->m_length = length;
+    this->m_width = width;
+    this->obstacles = obstacles;
 
-    m_edges.reserve(length * width);
+    this->m_edges.reserve(length * width);
 
     for (int i = length - 1; i >= 0; i--) {
 

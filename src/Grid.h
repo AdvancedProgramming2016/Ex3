@@ -25,7 +25,7 @@ public:
     /*
      * Constructor which receives the size of the matrix.
      */
-    Grid(int length, int width, std::vector<Point> obstacles);
+    Grid(unsigned int length, unsigned int width, std::vector<Point> &obstacles);
 
     /*
      * Returns the obstacles that appear on the map.

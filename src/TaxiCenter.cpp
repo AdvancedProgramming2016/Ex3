@@ -75,7 +75,7 @@ void TaxiCenter::createTaxi(Driver *driver) {
 
     for (int i = 0; i < vehicles.size(); ++i) {
 
-        if (driver->getDriverId() == vehicles[i]->getVehicleId()) {
+        if (driver->getVehicleId() == vehicles[i]->getVehicleId()) {
 
             Taxi *taxi = new Taxi(driver, vehicles[i], Point(0, 0));
             addTaxi(taxi);

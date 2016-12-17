@@ -19,7 +19,6 @@ private:
     unsigned totalMetersPassed;
     unsigned numOfPassengers;
     double   tariff;
-    Taxi     *taxi;
     Point    startPoint;
     Point    endPoint;
 
@@ -32,11 +31,6 @@ public:
     Trip(unsigned int rideId, Point &startPoint,
          Point &endPoint, unsigned int numOfPassengers,
          double tariff);
-
-    /*
-     * Destructor.
-     */
-    virtual ~Trip();
 
     /*
      * Returns the ride id.
@@ -54,6 +48,11 @@ public:
     unsigned int getNumOfPassengers() const;
 
     /*
+    * Destructor.
+    */
+    virtual ~Trip();
+
+    /*
      * Returns the trip coefficient
      */
     double getTariff() const;
@@ -62,11 +61,6 @@ public:
      * Set the new trip coefficient
      */
     void setTariff(double newTariff);
-
-    /*
-     * Returns the taxi that is taking the trip.
-     */
-    Taxi *getTaxi() const;
 
     /*
      * Returns the starting point of the trip.

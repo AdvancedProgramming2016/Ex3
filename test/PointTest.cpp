@@ -16,8 +16,8 @@ TEST(PointTest, basicTest) {
 
     // Check print overloading
     testing::internal::CaptureStdout();
-    std::cout << "(1, 4)";
+    std::cout << p1;
     std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_TRUE(output == "(1, 4)");
+    EXPECT_TRUE(output == "(1,4)");
 
 }

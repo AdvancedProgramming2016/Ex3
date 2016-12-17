@@ -3,10 +3,14 @@
 
 Trip::Trip(unsigned int rideId, Point &startPoint,
            Point &endPoint, unsigned int numOfPassengers,
-           double tariff) : rideId(rideId), numOfPassengers(numOfPassengers), tariff(tariff),
-                                  startPoint(startPoint),
-                                  endPoint(endPoint),
-                                  totalMetersPassed(0) {}
+           double tariff){
+    this->rideId = rideId;
+    this->numOfPassengers = numOfPassengers;
+    this->tariff = tariff;
+    this->startPoint = startPoint;
+    this->endPoint = endPoint;
+    this->totalMetersPassed = 0;
+}
 
 Trip::~Trip() {
 
@@ -30,10 +34,6 @@ void Trip::setTariff(double newTariff) {
 
 double Trip::getTariff() const {
     return tariff;
-}
-
-Taxi *Trip::getTaxi() const {
-    return taxi;
 }
 
 const Point &Trip::getStartPoint() const {

@@ -13,13 +13,14 @@ TEST(GridTest, basicTest) {
 
     Grid grid(4, 5, obstacles);
     Point pt1(3, 2);
+    Point cornerPt(3, 4);
 
     // Check validity of initialization of the grid
     Vertex *vtx1 = grid.get_vertex(pt1);
     EXPECT_TRUE(vtx1->getM_point() == pt1);
 
-    // Check that get_edges returns valid vertex
-    Vertex *vtx2 = grid.get_vertex(Point(3, 4));
-    EXPECT_TRUE(vtx2->getM_point() == Point(3, 4));
+    // Check that corner point was created
+    Vertex *vtx2 = grid.get_vertex(cornerPt);
+    EXPECT_TRUE(vtx2->getM_point() == cornerPt);
 
 }

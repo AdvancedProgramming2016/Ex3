@@ -46,6 +46,23 @@ TEST_F(TaxiCenterTest, basicTest) {
     EXPECT_EQ(initTaxisSize,
               postTaxisSize); //check that a taxi was added to the taxi center
 
-    // TODO: DELETE BEFORE submitting
-    //EXPECT_NE(taxiCenter.answerCall(), 0); // check that a new trip was sent
+    Vehicle *v1 = new Vehicle(1234, 'F', 'B');
+    Driver *d1 = new Driver(2, 50, 'M', 4, 1234);
+
+    // Check validity of addVehicle, addDriver and createTaxi functions
+    taxiCenter.addVehicle(v1);
+    taxiCenter.addDriver(d1);
+    taxiCenter.createTaxi(d1);
+    EXPECT_EQ(taxiCenter.getTaxis()[0]->getDriver()->getDriverId(), 2);
+
+    // Check request Driver location
+    testing::internal::CaptureStdout();
+    taxiCenter.requestDriverLocation(2);
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_TRUE(output == "(0,0)\n");
+
+    // I get sigabrt when I try deleting
+    //delete d1;
+    //delete v1;
+
 }

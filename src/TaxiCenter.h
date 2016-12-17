@@ -99,6 +99,7 @@ public:
 
     virtual void update(Taxi *taxi);
 
+    // TODO: Do we need this function? it's not used at all
     void printDriverLocation(const Driver &driver);
 };
 
