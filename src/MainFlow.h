@@ -36,7 +36,7 @@ public:
     /*
      * Creates a map with obstacles.
      */
-    void createMap(unsigned height, unsigned width);
+    void createMap(Grid * grid);
 
     /*
      * Creates a taxi center.
@@ -53,6 +53,9 @@ public:
      */
     void createVehicle(Vehicle *vehicle);
 
+    /*
+     * Create a new trip.
+     */
     void createTrip(Trip * trip);
 
     /*

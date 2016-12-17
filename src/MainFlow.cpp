@@ -3,16 +3,16 @@
 
 MainFlow::MainFlow() {
 
-    this->taxiCenter = new TaxiCenter(new Point(0, 0));
+    //this->taxiCenter = new TaxiCenter(new Point(0, 0));
 }
 
-void MainFlow::createMap(unsigned height, unsigned width) {
-
+void MainFlow::createMap(Grid *grid) {
+    this->map = grid;
 }
 
 void MainFlow::createTaxiCenter(Point *location) {
 
-    taxiCenter = new TaxiCenter(location);
+    this->taxiCenter = new TaxiCenter(location);
 }
 
 void MainFlow::createDriver(Driver *driver) {
@@ -29,7 +29,7 @@ void MainFlow::createVehicle(Vehicle *vehicle) {
 void MainFlow::createTrip(Trip *trip) {
 
     // Push new trip to trip queue
-    this->taxiCenter->getTrips().push(trip);
+    this->taxiCenter->addTrip(trip);
 }
 
 TaxiCenter *MainFlow::getTaxiCenter() const {

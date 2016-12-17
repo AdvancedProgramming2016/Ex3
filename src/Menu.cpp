@@ -6,14 +6,16 @@ Menu::Menu() {
 
 }
 
-MainFlow Menu::getMainFlow() {
+MainFlow *Menu::getMainFlow() {
     return this->mainFlow;
 }
 
 int Menu::initializeGame() {
 
     //Create Grid with obstacles.
-    this->stringParser.parseGridInput();
+    this->getMainFlow()->createMap(
+            this->stringParser.parseGridInput());
+    this->getMainFlow()->createTaxiCenter(new Point(0,0));
 }
 
 int checkUserInput(int userSelection) {
@@ -37,35 +39,35 @@ int Menu::runMenu() {
 
             // Create driver
             case 1:
-                this->getMainFlow().createDriver(
+                this->getMainFlow()->createDriver(
                         this->stringParser.parseDriverInput());
                 break;
 
                 // Create trip
             case 2:
-                this->getMainFlow().createTrip(
+                this->getMainFlow()->createTrip(
                         this->stringParser.parseTripInput());
                 break;
 
                 // Create vehicle
             case 3:
-                this->getMainFlow().createVehicle(
+                this->getMainFlow()->createVehicle(
                         this->stringParser.parseVehicleInput());
                 break;
 
                 // Request for driver location
             case 4:
-                this->getMainFlow().getTaxiCenter()->requestDriverLocation(//TODO this method should be in mainFlow like the rest above.
+                this->getMainFlow()->getTaxiCenter()->requestDriverLocation(//TODO this method should be in mainFlow like the rest above.
                         this->stringParser.parseDriverLocation());
                 break;
 
                 // Start Driving
             case 6:
-                this->getMainFlow().startDriving();
+                this->getMainFlow()->startDriving();
                 break;
 
             case 7:
-                this->getMainFlow().exitSystem();
+                this->getMainFlow()->exitSystem();
 
                 // Invalid input
             default:

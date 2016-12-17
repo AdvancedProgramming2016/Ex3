@@ -8,9 +8,12 @@ protected:
     MainFlow mainFlow;
     Driver *driver;
     Vehicle *vehicle;
+    std::vector<Point> obstacles;
+    Grid *grid;
 
     virtual void SetUp() {
-        mainFlow.createMap(5, 5);
+        grid = new Grid(5,5,obstacles);
+        mainFlow.createMap(grid);
         mainFlow.createTaxiCenter(new Point(0, 0));
         driver = new Driver(0, 50, 'M', 27, 1);
         vehicle = new StandardVehicle(1, 'F', 'W');
@@ -19,6 +22,7 @@ protected:
     virtual void TearDown() {
         delete driver;
         delete vehicle;
+        delete grid;
     }
 
 public:
@@ -103,6 +107,5 @@ TEST_F(MainFlowTest, startDriveBasicTest) {
     //delete trip1;
 
 }
-
 
 

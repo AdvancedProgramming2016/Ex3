@@ -11,7 +11,7 @@ StringParser::StringParser() {
 
 }
 
-void StringParser::checkGridInput(int height, int width) {
+void StringParser::checkGridInput(int height, int width) { //TODO delete this and the next one below if not used.
 
 }
 
@@ -43,7 +43,7 @@ Driver *StringParser::parseDriverInput() {
 
 }
 
-Graph *StringParser::parseGridInput() {
+Grid *StringParser::parseGridInput() {
 
     int width          = 0;
     int height         = 0;
@@ -71,8 +71,8 @@ Graph *StringParser::parseGridInput() {
     //TODO: Need to do something with obstacles
 
     // Create instance of graph
-    Graph *graph = new Grid(height, width, obstacles);
-    return graph;
+    //Grid *graph =
+    return new Grid(height, width, obstacles);
 
 }
 

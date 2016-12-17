@@ -13,7 +13,7 @@ class Menu {
 
 private:
     StringParser stringParser;
-    MainFlow mainFlow;
+    MainFlow *mainFlow;
 
 public:
 
@@ -21,7 +21,7 @@ public:
     int initializeGame();
     int checkUserInput(int userSelection);
     int runMenu();
-    MainFlow getMainFlow();
+    MainFlow *getMainFlow();
 
 };
 
