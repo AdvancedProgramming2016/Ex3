@@ -12,17 +12,17 @@ protected:
     Grid               *grid;
 
     virtual void SetUp() {
+        Point location(0,0);
         grid = new Grid(5, 5, obstacles);
         mainFlow.createMap(grid);
-        mainFlow.createTaxiCenter(new Point(0, 0));
+        mainFlow.createTaxiCenter(&location);
         driver  = new Driver(0, 50, 'M', 27, 1);
         vehicle = new StandardVehicle(1, 'F', 'W');
     }
 
     virtual void TearDown() {
-        delete driver;
-        delete vehicle;
-        delete grid;
+        delete mainFlow.getTaxiCenter();
+        delete mainFlow.getMap();
     }
 
 public:
@@ -107,5 +107,4 @@ TEST_F(MainFlowTest, startDriveBasicTest) {
     EXPECT_TRUE(
             this->mainFlow.getTaxiCenter()->getTaxis()[0]->getCurrentPosition()
             == endPt);
-
 }
