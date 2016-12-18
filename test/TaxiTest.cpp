@@ -15,6 +15,7 @@ TEST(TaxiTest, basicTest) {
 
     Trip *trip = new Trip(1, start, end, 3, 20);
     Taxi *taxi = new Taxi(driver, vehicle, Point(0, 0));
+    taxi->setTrip(trip);
 
     taxi->endTrip();
     newSatisfaction = taxi->getDriver()->getAvgSatisfaction();
@@ -22,7 +23,8 @@ TEST(TaxiTest, basicTest) {
     ASSERT_TRUE(taxi->getTrip() ==
                 0);                 //check that the trip was set to NULL
     //EXPECT_NE(initSatisfaction,
-      //        newSatisfaction); //check that the average satisfaction was changed, not mandatory
+    //        newSatisfaction); //check that the average satisfaction was
+    // changed, not mandatory
 
     //Delete Variables
     delete taxi;
