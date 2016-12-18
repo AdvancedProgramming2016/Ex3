@@ -5,17 +5,17 @@ class MainFlowTest : public ::testing::Test {
 
 protected:
 
-    MainFlow mainFlow;
-    Driver *driver;
-    Vehicle *vehicle;
+    MainFlow           mainFlow;
+    Driver             *driver;
+    Vehicle            *vehicle;
     std::vector<Point> obstacles;
-    Grid *grid;
+    Grid               *grid;
 
     virtual void SetUp() {
         grid = new Grid(5, 5, obstacles);
         mainFlow.createMap(grid);
         mainFlow.createTaxiCenter(new Point(0, 0));
-        driver = new Driver(0, 50, 'M', 27, 1);
+        driver  = new Driver(0, 50, 'M', 27, 1);
         vehicle = new StandardVehicle(1, 'F', 'W');
     }
 
@@ -35,12 +35,12 @@ public:
  */
 TEST_F(MainFlowTest, basicTest) {
 
-    int preDriversNum = 0;
-    int postDriverNum = 0;
-    int preVehicleNum = 0;
-    int postVehicleNum = 0;
-    bool foundDriver = false;
-    bool foundVehicle = false;
+    int  preDriversNum  = 0;
+    int  postDriverNum  = 0;
+    int  preVehicleNum  = 0;
+    int  postVehicleNum = 0;
+    bool foundDriver    = false;
+    bool foundVehicle   = false;
 
     EXPECT_FALSE(mainFlow.getMap() == 0);        // make sure a map exists
     EXPECT_FALSE(
@@ -78,7 +78,8 @@ TEST_F(MainFlowTest, basicTest) {
     }
 
     EXPECT_TRUE(
-            foundVehicle); // check that the correct vehicle was added to the list.
+            foundVehicle);
+    // check that the correct vehicle was added to the list.
 
     postVehicleNum = (int) mainFlow.getTaxiCenter()->getVehicles().size();
 
@@ -91,7 +92,7 @@ TEST_F(MainFlowTest, basicTest) {
  */
 TEST_F(MainFlowTest, startDriveBasicTest) {
 
-    Point startPt(2, 2);
+    Point startPt(0, 0);
     Point endPt(0, 1);
 
     Trip *trip1 = new Trip(78, startPt, endPt, 2, 3);
